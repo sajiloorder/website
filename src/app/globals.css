@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --orange-web: #faa409ff;
+  --black: #000000ff;
+  --white: #ffffffff;
+  --white-smoke: #f5f5f5ff;
+  --royalblue: #4169e1ff;
+  --teal: #0e7c7bff;
+
+  --primary-color: var(--orange-web);
+  --secondary-color: var(--teal);
+  --accent-color: var(--royalblue);
+  --background: var(--white);
+  --text-color: var(--black);
 }
 
 @theme inline {
