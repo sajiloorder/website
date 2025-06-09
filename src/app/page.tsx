@@ -1,11 +1,29 @@
+
+import Nav from '@/components/nav/Nav'
+import HeroSection from '@/components/landing/hero-section/HeroSection';
+import Category from '@/components/landing/category-section/Category';
+import Popular from '@/components/landing/popular-section/Popular';
+import All from '@/components/landing/all-section/All';
+import DeliverySteps from '@/components/landing/delivery-step/DeliverySteps';
+import Footer from '@/components/footer/Footer';
+
 export default function LandingPage() {
   return (
     <>
-    <h1>hello</h1>
-      <h1 className="text-f">Hello</h1>
+      {/*nav section */}
+      <Nav />
       {/* hero section */}
-      {/* new item section */}
+      <HeroSection />
+      {/* category section */}
+      <Category />
+      {/*popular section */}
+       <All />
+      <Popular />
       {/* drinks section */}
+      <DeliverySteps />
+
+      <Footer />
+     
     </>
   );
 }

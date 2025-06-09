@@ -1,26 +1,40 @@
-export default function Nav() {
+
+
+export default function HeroSection() {
   return (
-    <nav className=" flex flex-row justify-between items-center px-5 py-4  ">
-      {/* menu-icon */}
-      <AiOutlineMenu className="cursor-pointer  hover:text-blue-500" />
-      <div className="flex flex-row gap-2 justify-between items-center  ">
-        {/* logo */}
-        <Logo />
-      </div>
-
-      {/* only for desktop */}
-      {/* <div className="hidden sm:flex flex-row gap-2 ">
-        <Link href="">example</Link>
     
-      </div> */}
+      <section className=" min max-h-screen flex flex-col  md:flex-row items-center justify-between px-8 py-2 bg-black max-w-7xl mx-auto">
+        
+          {/* Left Content */}
+          <div className="text-center md:text-left px-10 md:w-1/2 mb-30">
+            <h1 className="text-2xl md:text-2xl font-bold  text-white smoke mb-2">JUST A TAP AWAY !<br />
+              YOUR TRUSTED DELIVERY PARTNER.
+            </h1>
+            <p className="text-white smoke text-lg mb-2">
+              Fresh fast delivered to your doorstep. Supporting local people and local business in your hometown.
 
-      <div className="flex flex-row gap-2 ">
-        {/* cart-icon */}
-        <AiOutlineShoppingCart className="cursor-pointer  hover:text-blue-500" />
+            </p>
+            <div className="flex flex-col  sm:flex-row gap-4 justify-center  md:justify-start">
+              <button className="border border-green-700 bg-teal-600 text-white smoke  px-2 py-0.5 rounded-lg hover:bg-red-500 transition">
+                Order Now
+              </button>
+              <button className="border border-green-600 bg-teal-600 text-white  px-2 py-2 rounded-lg hover:bg-red-500 transition">
+                See Menu
+              </button>
+            </div>
+          </div>
+        
+        <div className="mb-30  md:mt-0  md:w-1/2 flex justify-center ">
+          <img 
+            src="/images/burger.jpg"
+            alt="Food Delivery"
+            className="w-full"
+          />
+        </div>
 
-        {/* user-icon */}
-        <AiOutlineUser className="cursor-pointer hover:text-blue-500" />
-      </div>
-    </nav>
+        {/* Right Image */}
+      </section>
+    
+
   );
 }

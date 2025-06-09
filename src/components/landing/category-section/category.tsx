@@ -1,0 +1,51 @@
+import Image from 'next/image';
+
+const categories = [
+    { name: 'Burger', image: '/images/burger.jpg' },
+    { name: 'Biryani', image: '/images/mutton.jpg' },
+    { name: 'Momo', image: '/images/chilly momo.jpg' },
+    { name: 'Roll', image: '/images/chicken katti.jpg' },
+    { name: 'Drinks', image: '/images/drinks.jpg' },
+    { name: 'Combo', image: '/images/combo.jpeg' },
+    { name: 'Sekwa', image: '/images/sekwa.jpg' },
+    { name: 'Breakfast', image: '/images/burger.jpg' },
+    { name: 'Salad', image: '/images/salad.jpg' },
+    { name: 'Pizza', image: '/images/burger.jpg' },
+    { name: 'Offer', image: '/images/chilly momo.jpg' },
+    { name: 'Recommended', image: '/images/combo.jpeg' },
+    { name: 'popular', image: '/images/drinks.jpg' },
+];
+
+export default function Category() {
+    return (
+
+        <section className="py-4  max-w-7xl sm:px-12 lg:px-2 bg-gradient-to-br  from-orange-50 to-yellow-80">
+            <h2 className="text-3xl font-bold  mb-4">
+                Explore Categories
+            </h2>
+
+            <div className="flex space-x-4 justify-center  scrollbar-hide">
+                {categories.map((cat) => (
+                    <div
+                        key={cat.name}
+                        className="flex flex-col items-center justify-center  text-center cursor-pointer group"
+                    >
+                        <div className="w-20 h-20 rounded-full  items-center justify-center overflow-hidden border-1 border-orange-400">
+                            <Image
+                                src={cat.image}
+                                alt={cat.name}
+                                width={80}
+                                height={80}
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
+                        <p className="text-sm py-2 font-semibold text-black group-hover:text-orange-600">
+                            {cat.name}
+                        </p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+    )
+}
