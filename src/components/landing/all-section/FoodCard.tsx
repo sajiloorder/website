@@ -33,13 +33,13 @@ export default function FoodCard({
       />
 
       {/* Content */}
-      <div className="p-2 ">
+      <div className="p-2 bg-orange-50 ">
         <h3 className="text-lg font-serif  text-black truncate">{name}</h3>
         <div className="flex items-center text-sm text-red-700">
-          ⭐⭐⭐ {rating.toFixed(1)} <span className="text-black ">•</span>{' '}
-          <span className="ml-2 font-serif  pl-8 font-bold text-black">Rs.{price.toFixed(0)}</span>
+         {rating.toFixed(1)} <span className="text-black ">•</span>{' '}
+          <span className="ml-2 font-serif  pl-8 justify-end font-bold text-black">Rs.{price.toFixed(0)}</span>
         </div>
-        <button className="w-full  bg-teal-800 text-white text-sm py-1  rounded-lg hover:bg-red-500 transition">
+        <button className="w-full  bg-primary text-white text-sm py-1  rounded-lg hover:opacity-80 transition">
           order now
         </button>
       </div>

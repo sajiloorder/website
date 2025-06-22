@@ -18,8 +18,9 @@ Accent	Alerts, errors, success states	#ef4444 (red) */
   --royalblue: #4169e1ff;
   --teal: #0e7c7bff;
   --gray: #6b7280;
+  --red:#ff3131;
 
-  --primary: var(--another);
+  --primary: var(--red);
   --secondary: var(--teal);
   --accent: var(--royalblue);
   --background: var(--white);

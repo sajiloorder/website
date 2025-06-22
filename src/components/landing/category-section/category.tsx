@@ -19,12 +19,12 @@ const categories = [
 export default function Category() {
     return (
 
-        <section className="py-4  max-w-7xl sm:px-12 lg:px-2 bg-gradient-to-br  from-orange-50 to-yellow-80">
+        <section className="py-4 ml-30 max-w-7xl items-center  justify-center sm:px-12 lg:px-2bg-red-50">
             <h2 className="text-3xl font-bold  mb-4">
                 Explore Categories
             </h2>
 
-            <div className="flex space-x-4 justify-center  scrollbar-hide">
+            <div className="flex space-x-4 items-center  justify-center  scrollbar-hide">
                 {categories.map((cat) => (
                     <div
                         key={cat.name}
@@ -39,7 +39,7 @@ export default function Category() {
                                 className="object-cover w-full h-full"
                             />
                         </div>
-                        <p className="text-sm py-2 font-semibold text-black group-hover:text-orange-600">
+                        <p className="text-sm py-2 font-semibold text-primary hover:opacity-80">
                             {cat.name}
                         </p>
                     </div>

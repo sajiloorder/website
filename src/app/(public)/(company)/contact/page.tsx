@@ -7,15 +7,15 @@ import React from 'react';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#cc4744">
       {/* Hero Section */}
       <div
-        className="relative h-[500px] bg-cover rounded-2xl bg-center"
+        className="relative h-[400px] bg-cover rounded-2xl bg-center"
         style={{ backgroundImage: "url('/images/combo.jpg')" }}
       >
         <h1 className="text-white text-3xl font-bold p-10">Chicken Gravy</h1>
 
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-60 flex  rounded-2xl flex-col justify-center leading-relaxed items-center text-white text-center">
+        <div className="absolute inset-0 bg-primary bg-opacity-60 flex  rounded-2xl flex-col justify-center leading-relaxed items-center text-white text-center">
           <h1 className="text-4xl font-bold">Contact Us</h1>
           <p className="mt-2 text-lg"> Reach out anytime!</p>
         </div>
@@ -52,14 +52,14 @@ export default function ContactPage() {
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">Message</label>
             <textarea
-              className="w-full px-4 py-2 border  rounded-md focus:outline-none focus:ring-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
               rows={5}
               placeholder="How can we help you?"
             ></textarea>
           </div>
           <button
             type="submit"
-            className="bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-pink-700 transition"
+            className="bg-primary text-white px-6 py-2 rounded-md hover:opacity-80 hover:text-black  transition"
           >
             Send Message
           </button>

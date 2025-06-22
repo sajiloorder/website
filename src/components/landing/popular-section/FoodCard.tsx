@@ -39,7 +39,7 @@ export default function FoodCard({
           ⭐⭐⭐ {rating.toFixed(1)} <span className="text-black ">•</span>{' '}
           <span className="ml-2 font-serif  pl-8 font-bold text-black">Rs.{price.toFixed(0)}</span>
         </div>
-        <button className="w-full  bg-teal-800 text-white text-sm py-1  rounded-lg hover:bg-red-500 transition">
+        <button className="w-full  bg-primary text-white text-sm py-1  rounded-lg hover:bg-red-500 transition">
           order now
         </button>
       </div>
