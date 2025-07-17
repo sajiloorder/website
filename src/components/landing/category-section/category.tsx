@@ -19,7 +19,7 @@ const categories = [
 export default function Category() {
     return (
 
-        <section className="py-4 ml-30 max-w-7xl items-center  justify-center sm:px-12 lg:px-2bg-red-50">
+        <section className="py-4 ml-30 max-w-7xl items-center overflow-x-hidden  justify-center sm:px-12 lg:px-2bg-red-50">
             <h2 className="text-3xl font-bold  mb-4">
                 Explore Categories
             </h2>
@@ -30,7 +30,7 @@ export default function Category() {
                         key={cat.name}
                         className="flex flex-col items-center justify-center  text-center cursor-pointer group"
                     >
-                        <div className="w-20 h-20 rounded-full  items-center justify-center overflow-hidden border-1 border-orange-400">
+                        <div className="w-20 h-20 rounded-full  items-center justify-center overflow-x-hidden border-1 border-orange-400">
                             <Image
                                 src={cat.image}
                                 alt={cat.name}

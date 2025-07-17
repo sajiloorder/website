@@ -2,7 +2,7 @@ export default function HeroSection({ item }: any) {
   return (
     <section className=" flex flex-col h-[200px] justify-between  items-center w-full relative overflow-hidden bg-primary rounded-lg md:flex-row  md:h-[500px] ">
       {/* Left Content */}
-      <div className=" z-10 w-full px-10 pt-10 md:w-2/3 md:pt-0 flex flex-col justify-center items-start  gap-2   ">
+      <div className=" z-10 w-full shrink-1 px-10 pt-10 md:w-2/3 md:pt-0 flex flex-col justify-center items-start  gap-2   ">
         <h1 className="text-2xl md:text-2xl font-bold  text-white smoke mb-2">{item?.title}</h1>
         <p className="hidden md:block text-white smoke text-lg mb-2 ">{item?.description}</p>
         <div className=" gap-4 flex flex-col justify-between  ">
@@ -11,7 +11,7 @@ export default function HeroSection({ item }: any) {
         </div>
       </div>
 
-      <div className=" sm:absolute sm:bottom-10 sm:left-1/4 z-9 w-full md:relative   md:w-1/3 flex-row   ">
+      <div className=" shrink-1  sm:absolute sm:bottom-10 sm:left-1/4 z-9 w-full md:relative   md:w-1/3 flex-row   ">
         <img src={item?.img_url} alt="Food Delivery" className="w-auto h-[350px]" />
       </div>
 

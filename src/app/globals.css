@@ -18,7 +18,7 @@ Accent	Alerts, errors, success states	#ef4444 (red) */
   --royalblue: #4169e1ff;
   --teal: #0e7c7bff;
   --gray: #6b7280;
-  --red:#ff3131;
+  --red: #ff3131;
 
   --primary: var(--red);
   --secondary: var(--teal);
@@ -28,6 +28,7 @@ Accent	Alerts, errors, success states	#ef4444 (red) */
   --foreground: var(--black);
   --foreground-secondary: var(--gray);
 }
+
 /* all the tailwindcss variables are defined here */
 @theme {
   --color-primary: var(--primary);
@@ -37,6 +38,7 @@ Accent	Alerts, errors, success states	#ef4444 (red) */
   --color-foreground: var(--foreground);
   --color-background-secondary: var(--white-smoke);
 }
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -49,6 +51,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 main {
   padding: 0 20px;
 }

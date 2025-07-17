@@ -3,15 +3,23 @@ import Logo from "../ui/logo/Logo";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
+import MobileNav from "./MobileNav";
+
+
+
 
 export default function Nav() {
   return (
     <nav className=" flex flex-row justify-between items-center px-5 py-4  ">
       {/* menu-icon */}
       <AiOutlineMenu className="cursor-pointer  hover:text-blue-500" />
+      {/* <MobileNav /> */}
       <div className="flex flex-row gap-2 justify-between items-center  ">
         {/* logo */}
-        <Logo />
+
+        <Link href="/">
+          <Logo />
+        </Link>
       </div>
 
       {/* only for desktop */}
