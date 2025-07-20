@@ -1,3 +1,3 @@
 export default function Logo() {
-  return <div className="flex flex-row font-semibold  cursor-pointer text-primary text-lg hover:opacity-80">SAJILO ORDER !</div>;
+  return <div className="flex flex-row font-semibold  hover:text-red-950 cursor-pointer text-primary text-md hover:white">SAJILO ORDER !</div>;
 }

@@ -3,8 +3,8 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 
 export default function SignupPage() {
   return (
-    <div className="min-h-screen bg-cover bg-center bg-[url('/images/combo.jpeg')] flex items-center justify-center">
-      <div className="bg-primary/80 font-serif backdrop-blur-lg justify-center items-center border border-white/30 p-14 rounded-2xl shadow-2xl w-95 max-w-md">
+    <div className="min-h-screen  bg-cover bg-center bg-[url('/images/combo.jpeg')] flex items-center justify-center">
+      <div className="bg-primary/80 m-8 font-serif p-14 backdrop-blur-lg justify-center items-center border border-white/30  rounded-2xl shadow-2xl w-90 max-w-md">
         <h2 className="text-3xl font-bold text-center text-white mb-4">sajilo order </h2>
         <h2 className="text-2xl font-bold text-center text-white mb-1">Create Your Account </h2>
         <p className="text-center text-white mb-6">Sign up to start ordering your favorite meals!</p>

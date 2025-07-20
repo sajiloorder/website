@@ -5,36 +5,38 @@ import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary rounded-md text-white py-8">
+    <footer className="bg-primary rounded-md text-white py-6">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1  rounded-2xl md:grid-cols-4 gap-6">
         {/* Brand */}
         <div>
-          <h2 className="text-xl font-bold mb-2">Sajilo Order</h2>
-          <p className="text-sm text-white">
-            Fast and fresh food delivered to your door.
-            <br /># Best in the town.
-          </p>
+          <h2 className="text-lg font-bold mb-2">We Are Sajilo Order</h2>
+          {/* <p className="text-sm text-white">
+            Fast and fresh food delivered to your door.Just tap away.
+          </p> */}
+          <ul>
+            <Link href="/about" className="text-sm hover:text-white">
+              About
+            </Link>
+          </ul>
+          <ul>
+            <Link href="/" className="text-sm hover:text-white">
+              Home
+            </Link>
+          </ul>
+          <ul>
+            <Link href="/menu" className="text-sm hover:text-white">
+              Menu
+            </Link>
+          </ul>
+
         </div>
 
         {/* Navigation */}
         <div>
           <h3 className="font-semibold mb-2">Links</h3>
           <ul className="text-sm text-white space-y-1">
-            <li>
-              <Link href="/" className="hover:text-white">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="/menu" className="hover:text-white">
-                Menu
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-white">
-                Contact
-              </Link>
-            </li>
+
+
             <li>
               <Link href="/help" className="hover:text-white">
                 Help
@@ -46,15 +48,22 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/contact" className="hover:text-white">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link href="/faqs" className="hover:text-white text-xm">
+                FAQS
+              </Link>
+            </li>
+
+            <li>
               <Link href="/privacy-policy" className="hover:text-white">
                 Privacy Polciy
               </Link>
             </li>
-            <li>
-              <Link href="/about" className="hover:text-white">
-                About
-              </Link>
-            </li>
+
           </ul>
         </div>
 

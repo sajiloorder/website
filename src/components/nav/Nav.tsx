@@ -3,16 +3,17 @@ import Logo from "../ui/logo/Logo";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-import MobileNav from "./MobileNav";
+
 
 
 
 
 export default function Nav() {
   return (
-    <nav className=" flex flex-row justify-between items-center px-5 py-4  ">
+    <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-4 py-3  ">
       {/* menu-icon */}
-      <AiOutlineMenu className="cursor-pointer  hover:text-blue-500" />
+      <AiOutlineMenu className="cursor-pointer  hover:text-green-400" />
+
       {/* <MobileNav /> */}
       <div className="flex flex-row gap-2 justify-between items-center  ">
         {/* logo */}
@@ -20,6 +21,7 @@ export default function Nav() {
         <Link href="/">
           <Logo />
         </Link>
+
       </div>
 
       {/* only for desktop */}
@@ -30,10 +32,10 @@ export default function Nav() {
 
       <div className="flex flex-row gap-2 ">
         {/* cart-icon */}
-        <AiOutlineShoppingCart className="cursor-pointer  hover:text-blue-500" />
+        <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
 
         {/* user-icon */}
-        <AiOutlineUser className="cursor-pointer hover:text-blue-500" />
+        <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
       </div>
     </nav>
   );

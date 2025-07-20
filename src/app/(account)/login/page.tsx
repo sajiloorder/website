@@ -1,20 +1,20 @@
 "use client";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
-
+import Link from "next/link";
 export default function SignupPage() {
     return (
-        <div className="min-h-screen bg-cover bg-center bg-[url('/images/combo.jpeg')] flex items-center justify-center">
-            <div className="bg-primary/80 font-serif backdrop-blur-lg justify-center items-center border border-white/30 p-14 rounded-2xl shadow-2xl w-95 max-w-md">
+        <div className="min-h-screen bg-object fit bg-center bg-[url('/images/burger1.webp')] flex items-center justify-center">
+            <div className=" bg-primary/80 font-serif backdrop-blur-lg justify-center items-center border border-white/30 p-14 rounded-2xl shadow-2xl w-95 max-w-md">
                 <h2 className="text-3xl font-bold text-center text-white mb-4">sajilo order </h2>
                 <h2 className="text-2xl font-bold text-center text-white mb-1">Create Your Account </h2>
                 <p className="text-center text-white mb-6">Sign up to start ordering your favorite meals!</p>
 
                 <form className=" justify-center items-center space-y-4">
-                    <input
+                    {/*  <input
                         type="text"
                         placeholder="Full Name"
                         className="w-full px-4 py-2 rounded-xl bg-white/80 hover:bg-white placeholder-gray-600 text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    />
+                    /> */}
                     <input
                         type="email"
                         placeholder="Email Address"
@@ -30,7 +30,7 @@ export default function SignupPage() {
                             type="submit"
                             className="w-35  bg-white/80  hover:bg-white  text-gray-700 py-2 rounded-xl font-light transition"
                         >
-                            Sign Up
+                            login
                         </button>
                     </div>
                 </form>
@@ -49,10 +49,10 @@ export default function SignupPage() {
                 </div>
 
                 <p className="mt-6 text-sm text-center text-white">
-                    Already have an account?{' '}
-                    <a href="/login" className="text-white font-light hover:text-blue-700">
-                        Log In
-                    </a>
+                    Don't have an account?{' '}
+                    <Link href="/signup" className="text-white font-light hover:text-blue-700">
+                        Signup
+                    </Link>
                 </p>
             </div>
         </div>

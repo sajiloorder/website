@@ -1,35 +1,42 @@
-"use client"
-
-import Image from "next/image"
-import { useState } from "react"
-import Link from "next/link"
-
-const MobileNav = () => {
-
-    const [open, setOpen] = useState(false)
+import Link from "next/link";
+import Logo from "../ui/logo/Logo";
+import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 
 
+
+
+
+export default function Nav() {
     return (
-        <div className=" ">
-            <Image src="/menu.png"
-                alt="" width={28}
-                height={28}
-                className="cursor-pointer"
-                onClick={() => setOpen((prev) => !prev)}
-            />
-            {open && (
-                <div className="absolute bg-[#fae89e] text-teal-800 left-0 top-20 w-full h-[calc(100vh-80px)] flex flex-col items-center justify-center gap-8 text-xl z-10">
-                    <Link href="/">Homepage</Link>
-                    <Link href="/">Shop</Link>
-                    <Link href="/">Deals</Link >
-                    <Link href="/" >Contact</Link >
-                    <Link href="/" >About</Link >
-                    <Link href="/" >Cart(1)</Link >
-                    <Link href="/" >Logout</Link >
-                </div >
-            )
-            }
-        </div >
-    )
+        <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-4 py-3  ">
+            {/* menu-icon */}
+            <AiOutlineMenu className="cursor-pointer  hover:text-green-400" />
+
+            {/* <MobileNav /> */}
+            <div className="flex flex-row gap-2 justify-between items-center  ">
+                {/* logo */}
+
+                <Link href="/">
+                    <Logo />
+                </Link>
+
+            </div>
+
+            {/* only for desktop */}
+            {/* <div className="hidden sm:flex flex-row gap-2 ">
+        <Link href="">example</Link>
+    
+      </div> */}
+
+            <div className="flex flex-row gap-2 ">
+                {/* cart-icon */}
+                <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+
+                {/* user-icon */}
+                <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
+            </div>
+        </nav>
+    );
 }
-export default MobileNav
