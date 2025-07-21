@@ -3,6 +3,8 @@ import Nav from "@/components/nav/Nav";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import NavContextProvider from "@/context/nav-context";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Nav />
-        <main>{children}</main>
+        <NavContextProvider>
+          <Nav />
+          <main>{children}</main>
+        </NavContextProvider>
         {/* footer */}
       </body>
     </html>
