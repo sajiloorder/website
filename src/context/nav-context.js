@@ -3,8 +3,9 @@ import React, { createContext, useState} from "react"
 
 export const NavContext = createContext({
     menu:false,
-    openMenu: () => {},
+    toggleMenu: () => {},
     closeMenu: () => {},
+    // profile related
     
 
 })
@@ -12,15 +13,15 @@ export const NavContext = createContext({
 const NavContextProvider = ({children}) => {
     const [menu, setMenu] = useState(false);
 
-    function openMenu() {
-        setMenu(true);
+    function toggleMenu() {
+        setMenu(state => !state);
     }
 
     function closeMenu() {
         setMenu(false)
     }
     return (
-        <NavContext.Provider value={{ menu, openMenu, closeMenu }} >
+        <NavContext.Provider value={{ menu, toggleMenu, closeMenu }} >
             {children}
         </NavContext.Provider>
     )

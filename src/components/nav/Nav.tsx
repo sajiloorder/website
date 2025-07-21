@@ -6,47 +6,42 @@ import Logo from "../ui/logo/Logo";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineClose } from "react-icons/md";
 
 import { NavContext } from "@/context/nav-context";
+import MobileMenu from "./mobile-menu/MobileMenu";
 
 export default function Nav() {
-  const { menu, openMenu, closeMenu } = useContext(NavContext);
+  const { menu, toggleMenu } = useContext(NavContext);
   /**
    * check menu state
    */
 
   return (
     <>
-      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-4 py-3  ">
-        {/* menu-icon */}
+      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 py-3  ">
+        {menu ? <MdOutlineClose className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} /> : <AiOutlineMenu className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} />}
 
-        <AiOutlineMenu className="cursor-pointer  hover:text-green-400" onClick={openMenu} />
-
-        {/* <MobileNav /> */}
         <div className="flex flex-row gap-2 justify-between items-center  ">
-          {/* logo */}
-
           <Link href="/">
             <Logo />
           </Link>
         </div>
 
-        {/* only for desktop */}
-        {/* <div className="hidden sm:flex flex-row gap-2 ">
-        <Link href="">example</Link>
-    
-      </div> */}
-
-        <div className="flex flex-row gap-2 ">
+        <div className="flex flex-row gap-4 justify-between items-center ">
           {/* cart-icon */}
-          <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+          <Link href={"/cart"}>
+            <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+          </Link>
 
           {/* user-icon */}
-          <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
+          <button>
+            <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
+          </button>
         </div>
       </nav>
       {/* side menu */}
-      {menu && <div className="h-20 w-20 bg-white z-10">this is side menu</div>}
+      {menu && <MobileMenu />}
     </>
   );
 }
