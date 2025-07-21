@@ -5,44 +5,46 @@ import Link from "next/link";
 import Footer from "@/components/footer/Footer";
 import MainLayout from "@/components/ui/layout/MainLayout";
 
-const menuItems = [
-  { id: 1, name: "Drinks", category: "Pizza", price: 450, image: "/images/drinks.jpg" },
-  { id: 2, name: "Cheeseburger", category: "Burgers", price: 200, image: "/images/burger.jpg" },
-  { id: 3, name: "Chicken Biryani", category: "Biryani", price: 1199, image: "/images/combo.jpeg" },
-  { id: 4, name: "Sushi Platter", category: "Japanese", price: 580, image: "/images/mutton.jpg" },
-  { id: 5, name: "fast", category: "Fast Food", price: 15.99, image: "/images/pizza.jpg" },
-  { id: 6, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-  { id: 7, name: "Chowmein", category: "Chowmein", price: 15.99, image: "/images/mutton.jpg" },
-  { id: 9, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 10, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 11, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 12, name: "Momo", category: "Momo", price: 15.99, image: "/images/burger1.webp" },
-  { id: 13, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 14, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 15, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
-  { id: 16, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 17, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 18, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-  { id: 19, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-  { id: 20, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-  { id: 21, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+import { dummy_menu_items } from "@/lib/data/menu";
 
-  { id: 22, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 23, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
-  { id: 24, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 25, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-  { id: 26, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-  { id: 27, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/pizza.jpg" },
-  { id: 28, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-  { id: 29, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-  { id: 30, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-  { id: 31, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-];
+// const menuItems = [
+//   { id: 1, name: "Drinks", category: "Pizza", price: 450, image: "/images/drinks.jpg" },
+//   { id: 2, name: "Cheeseburger", category: "Burgers", price: 200, image: "/images/burger.jpg" },
+//   { id: 3, name: "Chicken Biryani", category: "Biryani", price: 1199, image: "/images/combo.jpeg" },
+//   { id: 4, name: "Sushi Platter", category: "Japanese", price: 580, image: "/images/mutton.jpg" },
+//   { id: 5, name: "fast", category: "Fast Food", price: 15.99, image: "/images/pizza.jpg" },
+//   { id: 6, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
+//   { id: 7, name: "Chowmein", category: "Chowmein", price: 15.99, image: "/images/mutton.jpg" },
+//   { id: 9, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 10, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 11, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 12, name: "Momo", category: "Momo", price: 15.99, image: "/images/burger1.webp" },
+//   { id: 13, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 14, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 15, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
+//   { id: 16, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 17, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 18, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+//   { id: 19, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+//   { id: 20, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+//   { id: 21, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+
+//   { id: 22, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 23, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
+//   { id: 24, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 25, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
+//   { id: 26, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
+//   { id: 27, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/pizza.jpg" },
+//   { id: 28, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
+//   { id: 29, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
+//   { id: 30, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
+//   { id: 31, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
+// ];
 
 export default function MenuPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredItems = menuItems.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredItems = dummy_menu_items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <MainLayout>
@@ -58,7 +60,8 @@ export default function MenuPage() {
           {filteredItems.length > 0 ? (
             filteredItems.map((item) => (
               <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <Image src={item.image} alt={item.name} width={200} height={150} className="w-full h-35 object-cover" />
+                {/* in order to display image, we need to update image_url in /src/lib/data/menu.js */}
+                {/* <Image src={item.image_url} alt={item.name} width={200} height={150} className="w-full h-35 object-cover" /> */}
                 <div className="p-2 bg-orange-50 ">
                   <h3 className="text-lg font-serif  text-black truncate">{item.name}</h3>
                   <div className="flex items-center text-sm text-gray-400">
