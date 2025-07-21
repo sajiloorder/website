@@ -9,34 +9,35 @@ import { AiOutlineUser } from "react-icons/ai";
 
 
 export default function Nav() {
-  return (
-    <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-4 py-3  ">
-      {/* menu-icon */}
-      <AiOutlineMenu className="cursor-pointer  hover:text-green-400" />
+    return (
+        <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-4 py-3  ">
+            {/* menu-icon */}
+            <AiOutlineMenu className="cursor-pointer  hover:text-green-400" />
 
-      {/* <MobileNav /> */}
-      <div className="flex flex-row gap-2 justify-between items-center  ">
-        {/* logo */}
+            {/* <MobileNav /> */}
+            <div className="flex flex-row gap-2 justify-between items-center  ">
 
-        <Link href="/">
-          <Logo />
-        </Link>
+                {/* logo */}
 
-      </div>
+                <Link href="/">
+                    <Logo />
+                </Link>
 
-      {/* only for desktop */}
-      {/* <div className="hidden sm:flex flex-row gap-2 ">
+            </div>
+
+            {/* only for desktop */}
+            {/* <div className="hidden sm:flex flex-row gap-2 ">
         <Link href="">example</Link>
     
       </div> */}
 
-      <div className="flex flex-row gap-2 ">
-        {/* cart-icon */}
-        <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+            <div className="flex flex-row gap-2 ">
+                {/* cart-icon */}
+                <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
 
-        {/* user-icon */}
-        <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
-      </div>
-    </nav>
-  );
+                {/* user-icon */}
+                <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
+            </div>
+        </nav>
+    );
 }

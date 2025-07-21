@@ -16,6 +16,7 @@ export default function Nav() {
 
             {/* <MobileNav /> */}
             <div className="flex flex-row gap-2 justify-between items-center  ">
+
                 {/* logo */}
 
                 <Link href="/">
