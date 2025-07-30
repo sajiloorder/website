@@ -12,15 +12,17 @@ export default function FoodCard({ name, image, price, rating, tag }: { name: st
       <Image src={image} alt={name} width={200} height={150} className="w-full h-35 object-cover" />
 
       {/* Content */}
-      <div className="p-2 bg-orange-50 flex flex-col gap-5 ">
+      <div className="p-2 bg-orange-50 flex flex-col gap-2 ">
         <h3 className="text-lg font-serif  text-black ">{name}</h3>
         <div className="flex items-center text-sm text-red-700">
           {rating.toFixed(1)} <span className="text-black ">•</span> <span className="ml-2 font-serif  pl-8 justify-end font-bold text-black">Rs.{price.toFixed(0)}</span>
         </div>
         <Link href="/order">
-          <button className="w-full  bg-primary text-white text-sm py-1  rounded-lg hover:opacity-80 transition">order</button>
+          <button className="w-30 flex justify-center ml-9 bg-secondary hover:bg-primary
+           text-white text-sm py-1  rounded-lg transition">Add to Cart</button>
         </Link>
       </div>
     </div>
   );
 }
+

@@ -10,9 +10,12 @@ import { MdOutlineClose } from "react-icons/md";
 
 import { NavContext } from "@/context/nav-context";
 import MobileMenu from "./mobile-menu/MobileMenu";
+import Profile from "@/app/profile/page";
+import ProfileMenu from "@/app/profile/ProfileMenu/page";
 
 export default function Nav() {
   const { menu, toggleMenu } = useContext(NavContext);
+  const { profile, toggleProfile } = useContext(NavContext);
   /**
    * check menu state
    */
@@ -35,13 +38,18 @@ export default function Nav() {
           </Link>
 
           {/* user-icon */}
-          <button>
-            <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" />
-          </button>
+
+
+          {profile ? <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
+          {/* <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" /> */}
+
+
         </div>
       </nav>
       {/* side menu */}
       {menu && <MobileMenu />}
+      {profile && <ProfileMenu />}
+
     </>
   );
 }

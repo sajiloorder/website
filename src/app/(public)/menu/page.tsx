@@ -1,85 +1,122 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Footer from "@/components/footer/Footer";
-import MainLayout from "@/components/ui/layout/MainLayout";
-
+import React, { useState } from "react";
 import { dummy_menu_items } from "@/lib/data/menu";
+import { categories } from "@/lib/data/menu";
+import Link from "next/link";
 
-// const menuItems = [
-//   { id: 1, name: "Drinks", category: "Pizza", price: 450, image: "/images/drinks.jpg" },
-//   { id: 2, name: "Cheeseburger", category: "Burgers", price: 200, image: "/images/burger.jpg" },
-//   { id: 3, name: "Chicken Biryani", category: "Biryani", price: 1199, image: "/images/combo.jpeg" },
-//   { id: 4, name: "Sushi Platter", category: "Japanese", price: 580, image: "/images/mutton.jpg" },
-//   { id: 5, name: "fast", category: "Fast Food", price: 15.99, image: "/images/pizza.jpg" },
-//   { id: 6, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-//   { id: 7, name: "Chowmein", category: "Chowmein", price: 15.99, image: "/images/mutton.jpg" },
-//   { id: 9, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 10, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 11, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 12, name: "Momo", category: "Momo", price: 15.99, image: "/images/burger1.webp" },
-//   { id: 13, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 14, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 15, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
-//   { id: 16, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 17, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 18, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-//   { id: 19, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-//   { id: 20, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
-//   { id: 21, name: "Chicken Biryani", category: "Biryani", price: 11.99, image: "/images/combo.jpeg" },
+/* const categories = [
+  { id: 1, name: "Momo" },
+  { id: 2, name: "Burger" },
+  { id: 3, name: "Pizza" },
+  { id: 4, name: "Drinks" },
+  { id: 6, name: "Chowmein" },
+  { id: 7, name: "Biryani" },
+  { id: 8, name: "Chilly" },
+  { id: 9, name: "Snack" },
+  { id: 10, name: "Sekwa" },
+  { id: 11, name: "Veg" },
+  { id: 12, name: "Roll" },
+  { id: 13, name: "Naan" },
 
-//   { id: 22, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 23, name: "Momo", category: "Momo", price: 15.99, image: "/images/pizza.jpg" },
-//   { id: 24, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 25, name: "Momo", category: "Momo", price: 15.99, image: "/images/chilly momo.jpg" },
-//   { id: 26, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-//   { id: 27, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/pizza.jpg" },
-//   { id: 28, name: "Drinks", category: "Drinks", price: 15.99, image: "/images/drinks.jpg" },
-//   { id: 29, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-//   { id: 30, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-//   { id: 31, name: "Cheeseburger", category: "Burgers", price: 9.49, image: "/images/burger.jpg" },
-// ];
 
-export default function MenuPage() {
-  const [searchTerm, setSearchTerm] = useState("");
+]; */
 
-  const filteredItems = dummy_menu_items.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+const MenuPage = () => {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const getCategoryName = (id: number) => {
+    return categories.find((cat) => cat.id === id)?.name || "Unknown";
+  };
+
+  const filteredItems = dummy_menu_items.filter((item) => {
+    const categoryMatch =
+      selectedCategory === "All" ||
+      getCategoryName(item.category) === selectedCategory;
+    const searchMatch = item.name
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+    return categoryMatch && searchMatch;
+  });
 
   return (
-    <MainLayout>
-      <div className=" bg-white  rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition duration-200">
-        {/* Search Bar */}
-        <div className="max-w-md mx-auto mt-6 mb-6">
-          <input type="text" placeholder="Search food..." className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        </div>
-        <h1 className=" text-2xl pl-10 font-bold pb-2 font-inter mb-6">Our menu</h1>
 
-        {/* Menu Items */}
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-2 max-w-6xl mx-auto">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((item) => (
-              <div key={item.id} className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                {/* in order to display image, we need to update image_url in /src/lib/data/menu.js */}
-                {/* <Image src={item.image_url} alt={item.name} width={200} height={150} className="w-full h-35 object-cover" /> */}
-                <div className="p-2 bg-orange-50 ">
-                  <h3 className="text-lg font-serif  text-black truncate">{item.name}</h3>
-                  <div className="flex items-center text-sm text-gray-400">
-                    {item.category} <span className="text-black "></span> <span className=" font-inter ml-5 flex justify-end  font-bold text-black">Rs {item.price.toFixed()}</span>
-                  </div>
-                  <div className="flex justify-center">
-                    <Link href="/order">
-                      <button className="w-auto p-4 m-2 bg-primary text-white text-sm py-1 text-center item-center  rounded-lg hover:opacity-80 transition">Add to Cart</button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-center col-span-full text-gray-500">No items found.</p>
-          )}
+    <div className="px-4 py-8 max-w-7xl mx-auto">
+
+
+      {/* Search */}
+      <div className="flex justify-center mb-10">
+        <input
+          type="text"
+          placeholder="Search food..."
+          className="w-full max-w-md px-4 py-2 border rounded-lg shadow-sm"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+      <h1 className="text-2xl font-bold mb-6 mr-6 text-center">Our Menu..  </h1>
+
+      {/* Category Filter */}
+      <div className="scrollbar-hide ">
+
+        <div className="flex flex-row gap-3 overflow-x-auto md:overflow-visible md:flex-wrap justify-start md:justify-center mt-2 mb-10 px-2 scrollbar-hide scroll-smooth snap-x">
+
+          {["All", ...categories.map((cat) => cat.name)].map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={` text-black font-serif py-2 text-center px-4 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ${selectedCategory === cat
+                ? "bg-primary text-white"
+                : "border-gray-300 hover:bg-gray-100"
+                }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
-    </MainLayout>
+
+      {/* Menu Items */}
+      <div className="grid gap-6 mt-8 sm:grid-cols-2 md:grid-cols-4">
+        {filteredItems.map((item) => (
+          <Link key={item.id} href={`/menu/${item.id}`}>
+            <div
+              key={item.name}
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+            >
+              <img
+                src={item.image_url}
+                alt={item.name}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4 space-y-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold text-lg">{item.name}</h3>
+                  {item.is_popular && (
+                    <span className="text-xs bg-yellow-400 text-white px-2 py-0.5 rounded-full">
+                      Popular
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-500">
+                  Category: {getCategoryName(item.id)}
+                </p>
+                <p className="text-md font-bold text-primary">Rs. {item.price}</p>
+                <p
+                  className={`text-sm ${item.is_available ? "text-green-600" : "text-red-500"
+                    }`}
+                >
+                  {item.is_available ? "Available" : "Out of Stock"}
+                </p>
+              </div>
+
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default MenuPage;

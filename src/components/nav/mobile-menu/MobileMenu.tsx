@@ -25,12 +25,22 @@ const LINKS = [
     name: "contact",
     href: "/contact",
   },
+  {
+    id: 5,
+    name: "offer",
+    href: "/contact",
+  },
+  {
+    id: 6,
+    name: "FAQ",
+    href: "/contact",
+  },
 ];
 export default function MobileMenu() {
   const { closeMenu } = useContext(NavContext);
   return (
-    <section className=" absolute w-[350px] h-[600px] bg-white border border-gray-400 shadow-md z-10">
-      <div className=" flex flex-col gap-2 px-4">
+    <section className=" absolute w-[350px] h-[427px] bg-primary text-white  border border-gray-400 shadow-md z-10">
+      <div className=" flex mt-6 flex-col gap-4 px-2">
         {LINKS.map((link) => (
           <Link key={link.id} href={link.href} onClick={closeMenu}>
             {link.name}
