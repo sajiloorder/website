@@ -24,10 +24,12 @@ const NavContextProvider = ({ children }) => {
 
     function closeMenu() {
         setMenu(false)
+     
     }
 
     function toggleProfile() {
         setProfile(state => !state)
+        setMenu(false)
     }
     function closeProfile() {
         setProfile(false)

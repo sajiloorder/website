@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import Link from "next/link";
 import Logo from "../ui/logo/Logo";
@@ -10,15 +10,53 @@ import { MdOutlineClose } from "react-icons/md";
 
 import { NavContext } from "@/context/nav-context";
 import MobileMenu from "./mobile-menu/MobileMenu";
-import Profile from "@/app/profile/page";
+// import Profile from "@/app/profile/page";
 import ProfileMenu from "@/app/profile/ProfileMenu/page";
 
 export default function Nav() {
-  const { menu, toggleMenu } = useContext(NavContext);
-  const { profile, toggleProfile } = useContext(NavContext);
+  const { menu, toggleMenu, closeMenu, profile, toggleProfile, closeProfile } = useContext(NavContext);
   /**
    * check menu state
    */
+
+  useEffect(() => {
+    const element = document.getElementById("app");
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (element && element.contains(event.target as Node)) {
+        closeMenu();
+      }
+    };
+    if (menu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menu, closeMenu]);
+  
+  // profile menu, if clicked outside close #app from
+  useEffect(() => {
+    const element = document.getElementById("app");
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (element && element.contains(event.target as Node)) {
+        closeProfile();
+      }
+    };
+    if (profile) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [profile, closeProfile]);
 
   return (
     <>
@@ -39,17 +77,13 @@ export default function Nav() {
 
           {/* user-icon */}
 
-
           {profile ? <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
           {/* <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" /> */}
-
-
         </div>
       </nav>
       {/* side menu */}
       {menu && <MobileMenu />}
       {profile && <ProfileMenu />}
-
     </>
   );
 }

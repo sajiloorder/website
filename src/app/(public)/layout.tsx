@@ -5,7 +5,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import NavContextProvider from "@/context/nav-context";
 import Footer from "@/components/footer/Footer";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,12 +29,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NavContextProvider>
-          <Nav />
+          <Nav /> 
+          {/* button */}
 
-          <main>{children}</main>
+          <main id="app">{children}</main>
           <Footer />
         </NavContextProvider>
-
       </body>
     </html>
   );
