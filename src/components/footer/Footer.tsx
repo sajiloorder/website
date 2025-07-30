@@ -5,7 +5,7 @@ import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary rounded-md text-white py-6">
+    <footer className="bg-[#e8c6c6] rounded-md text-black py-6">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1  rounded-2xl md:grid-cols-4 gap-6">
         {/* Brand */}
         <div>
@@ -28,15 +28,12 @@ export default function Footer() {
               Menu
             </Link>
           </ul>
-
         </div>
 
         {/* Navigation */}
         <div>
           <h3 className="font-semibold mb-2">Links</h3>
           <ul className="text-sm text-white space-y-1">
-
-
             <li>
               <Link href="/help" className="hover:text-white">
                 Help
@@ -63,7 +60,6 @@ export default function Footer() {
                 Privacy Polciy
               </Link>
             </li>
-
           </ul>
         </div>
 
