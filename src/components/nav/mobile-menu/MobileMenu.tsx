@@ -27,13 +27,13 @@ const LINKS = [
   },
   {
     id: 5,
-    name: "offer",
-    href: "/contact",
+    name: "offers",
+    href: "/offers",
   },
   {
     id: 6,
     name: "FAQ",
-    href: "/contact",
+    href: "/faqs",
   },
 ];
 export default function MobileMenu() {

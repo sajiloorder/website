@@ -9,13 +9,18 @@ export const NavContext = createContext({
     profile: false,
     toggleProfile: () => { },
     closeProfile: () => { },
-
+    //cart related
+    /* cart: false,
+    toggleCart: () => { },
+    closeCart: () => { },
+ */
 
 })
 
 const NavContextProvider = ({ children }) => {
     const [menu, setMenu] = useState(false);
     const [profile, setProfile] = useState(false);
+    // const [cart, setCart] = useState(false);
 
 
     function toggleMenu() {
@@ -24,16 +29,24 @@ const NavContextProvider = ({ children }) => {
 
     function closeMenu() {
         setMenu(false)
-     
+
     }
 
     function toggleProfile() {
-        setProfile(state => !state)
+        setProfile(state => !state);
         setMenu(false)
     }
     function closeProfile() {
         setProfile(false)
     }
+    /* 
+        function toggleCart() {
+            setCart(state => !state);
+        }
+    
+        function closeCart() {
+            setCart(false) */
+
     return (
         <NavContext.Provider value={{
             menu,
@@ -41,7 +54,10 @@ const NavContextProvider = ({ children }) => {
             closeMenu,
             profile,
             toggleProfile,
-            closeProfile
+            closeProfile,
+            /*  cart,
+             toggleCart,
+             closeCart */
         }} >
             {children}
         </NavContext.Provider>

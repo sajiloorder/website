@@ -5,7 +5,7 @@ import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#e8c6c6] rounded-md text-black py-6">
+    <footer className="bg-gray-50 border-t border-gray-300 text-gray-600 py-6">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1  rounded-2xl md:grid-cols-4 gap-6">
         {/* Brand */}
         <div>
@@ -14,17 +14,17 @@ export default function Footer() {
             Fast and fresh food delivered to your door.Just tap away.
           </p> */}
           <ul>
-            <Link href="/about" className="text-sm hover:text-white">
+            <Link href="/about" className="text-sm text-black hover:text-primary">
               About
             </Link>
           </ul>
           <ul>
-            <Link href="/" className="text-sm hover:text-white">
+            <Link href="/" className="text-sm text-black hover:text-primary">
               Home
             </Link>
           </ul>
           <ul>
-            <Link href="/menu" className="text-sm hover:text-white">
+            <Link href="/menu" className="text-sm text-black hover:text-primary">
               Menu
             </Link>
           </ul>
@@ -33,30 +33,30 @@ export default function Footer() {
         {/* Navigation */}
         <div>
           <h3 className="font-semibold mb-2">Links</h3>
-          <ul className="text-sm text-white space-y-1">
+          <ul className="text-sm text-black space-y-1">
             <li>
-              <Link href="/help" className="hover:text-white">
+              <Link href="/help" className="hover:text-primary">
                 Help
               </Link>
             </li>
             <li>
-              <Link href="/offers" className="hover:text-white">
+              <Link href="/offers" className="hover:text-primary">
                 Offers
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-white">
+              <Link href="/contact" className="hover:text-primary">
                 Contact
               </Link>
             </li>
             <li>
-              <Link href="/faqs" className="hover:text-white text-xm">
+              <Link href="/faqs" className="hover:text-primary text-xm">
                 FAQS
               </Link>
             </li>
 
             <li>
-              <Link href="/privacy-policy" className="hover:text-white">
+              <Link href="/privacy-policy" className="hover:text-primary">
                 Privacy Polciy
               </Link>
             </li>
@@ -64,12 +64,12 @@ export default function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="space-y-0.5 text-white">
+        <div className="space-y-0.5 text-black  ">
           <h3 className="font-semibold mb-2">Contact</h3>
-          <p className="text-sm ">Whatsapp</p>
-          <p className="text-sm ">Direct call</p>
-          <p className="text-sm ">+977-9702003949</p>
-          <p className="text-sm ">sajilo.order4@gmail.com</p>
+          <p className="text-sm  hover:text-primary">Whatsapp</p>
+          <p className="text-sm  hover:text-primary">Direct call</p>
+          <p className="text-sm  hover:text-primary">+977-9702003949</p>
+          <p className="text-sm  hover:text-primary">sajilo.order4@gmail.com</p>
         </div>
 
         {/* Newsletter + Social */}
@@ -81,20 +81,20 @@ export default function Footer() {
           </form>
 
           {/* Social Icons */}
-          <div className="flex gap-1.5 mt-3 text-white ">
-            <a href="#" aria-label="Facebook" className="hover:text-white text-sm">
+          <div className="flex gap-1.5 mt-3 text-black ">
+            <a href="#" aria-label="Facebook" className="  hover:text-primary text-sm">
               <FaFacebookF />
             </a>
-            <a href="#" aria-label="Twitter" className="hover:text-white text-sm">
+            <a href="#" aria-label="Twitter" className="  hover:text-primary text-sm">
               <FaXTwitter />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-white text-sm">
+            <a href="#" aria-label="Instagram" className="  hover:text-primary text-sm">
               <FaInstagram />
             </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-white text-sm">
+            <a href="#" aria-label="LinkedIn" className=" hover:text-primary text-sm">
               <FaLinkedinIn />
             </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-white text-sm">
+            <a href="#" aria-label="LinkedIn" className=" hover:text-primary text-sm">
               <SiGmail />
             </a>
           </div>
