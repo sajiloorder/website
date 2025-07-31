@@ -13,6 +13,7 @@ import { NavContext } from "@/context/nav-context";
 import MobileMenu from "./mobile-menu/MobileMenu";
 // import Profile from "@/app/profile/page";
 import ProfileMenu from "@/app/profile/ProfileMenu/page";
+import Cart from "../cart/Cart";
 
 export default function Nav() {
   const { menu, toggleMenu, closeMenu, profile, toggleProfile, closeProfile } = useContext(NavContext);
@@ -87,6 +88,7 @@ export default function Nav() {
       {/* side menu */}
       {menu && <MobileMenu />}
       {profile && <ProfileMenu />}
+      {cart && <Cart />}
     </>
   );
 }
