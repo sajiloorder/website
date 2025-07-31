@@ -82,8 +82,8 @@ export default function Nav() {
 
   return (
     <>
-      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 py-3  ">
-        {menu ? <MdOutlineClose className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} /> : <AiOutlineMenu className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} />}
+      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 pt-3 pb-2  ">
+        {menu ? <MdOutlineClose size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} /> : <AiOutlineMenu size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} />}
 
         <div className="flex flex-row gap-2 justify-between items-center  ">
           <Link href="/">
@@ -97,21 +97,21 @@ export default function Nav() {
             <button onClick={() => dispatch(toggleCartMenu())}>
               <div className="flex  ">
                 {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
-                <MdOutlineClose className="cursor-pointer text-primary hover:text-green-400" />
+                <MdOutlineClose size={18} className="cursor-pointer text-primary hover:text-green-400" />
               </div>
             </button>
           ) : (
             <button onClick={() => dispatch(toggleCartMenu())}>
               <div className="flex  ">
                 {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
-                <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+                <AiOutlineShoppingCart size={18} className="cursor-pointer text-primary hover:text-green-400" />
               </div>
             </button>
           )}
 
           {/* user-icon */}
 
-          {profile ? <MdOutlineClose className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
+          {profile ? <MdOutlineClose size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
           {/* <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" /> */}
         </div>
       </nav>

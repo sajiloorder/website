@@ -30,7 +30,7 @@ const MenuPage = () => {
   };
 
   const filteredItems = dummy_menu_items.filter((item) => {
-    const categoryMatch = selectedCategory === "All" || getCategoryName(item.category) === selectedCategory;
+    const categoryMatch = selectedCategory === "All" || getCategoryName(Number(item?.category)) === selectedCategory;
     const searchMatch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
     return categoryMatch && searchMatch;
   });
@@ -57,6 +57,7 @@ const MenuPage = () => {
       {/* Menu Items */}
       <div className="grid gap-6 mt-8 sm:grid-cols-2 md:grid-cols-4">
         {filteredItems.map((item) => (
+          // replace with item card component
           <Link key={item.id} href={`/menu/${item.id}`}>
             <div key={item.name} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
               <img src={item.image_url} alt={item.name} className="w-full h-40 object-cover" />

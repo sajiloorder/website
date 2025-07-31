@@ -1,9 +1,6 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-// type Item = {
-//   id: number | string;
-// };
 const initalState = {
   cartMenu: false,
   items: [],
@@ -61,11 +58,19 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
       state.totalAmount = 0;
     },
+    hydrateCart(state, action) {
+    return {
+      ...state,
+      ...action.payload,
+    };
+  }
+ 
+
   },
 });
 
 
 
-export const {toggleCartMenu, closeCartMenu, addToCart, removeFromCart, updateQuantity, clearCart, } = cartSlice.actions;
+export const {toggleCartMenu, closeCartMenu, addToCart, removeFromCart, updateQuantity, clearCart,hydrateCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
