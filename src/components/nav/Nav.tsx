@@ -1,6 +1,7 @@
 "use client";
-import { useContext, useEffect } from "react";
 
+import { useContext, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import Logo from "../ui/logo/Logo";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -18,6 +19,8 @@ export default function Nav() {
   /**
    * check menu state
    */
+
+  const cart = useSelector((state: any) => state.cart.cart);
 
   useEffect(() => {
     const element = document.getElementById("app");
@@ -37,7 +40,7 @@ export default function Nav() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [menu, closeMenu]);
-  
+
   // profile menu, if clicked outside close #app from
   useEffect(() => {
     const element = document.getElementById("app");
