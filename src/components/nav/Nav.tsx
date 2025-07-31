@@ -8,6 +8,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineClose } from "react-icons/md";
+import { HiArrowLongRight } from "react-icons/hi2";
 
 import { NavContext } from "@/context/nav-context";
 import MobileMenu from "./mobile-menu/MobileMenu";
@@ -21,7 +22,7 @@ export default function Nav() {
 
   // redux for cart
   const dispatch = useDispatch();
-  const { cart, totalQuantity } = useSelector((state: any) => state.cart);
+  const { cart, totalQuantity, totalAmount } = useSelector((state: any) => state.cart);
 
   useEffect(() => {
     const element = document.getElementById("app");
@@ -95,7 +96,7 @@ export default function Nav() {
           {/* cart-icon */}
           {cart ? (
             <button onClick={() => dispatch(toggleCartMenu())}>
-              <div className="flex  ">
+              <div className="flex   ">
                 {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
                 <MdOutlineClose size={18} className="cursor-pointer text-primary hover:text-green-400" />
               </div>
@@ -116,6 +117,15 @@ export default function Nav() {
         </div>
       </nav>
       {/* side menu */}
+
+      {totalQuantity > 0 && (
+        <div className="fixed bottom-0 left-0 w-full bg-white h-[65px] p-2 flex justify-center items-center gap-4">
+          <p className="font-semibold text-sm">Rs {totalAmount} </p>
+          <Link href={"/cart"} className=" flex justify-center  gap-2 items-center text-sm bg-primary px-10 p-2 min-w-fit rounded text-white ">
+            {totalQuantity} Checkout <HiArrowLongRight size={20} />
+          </Link>
+        </div>
+      )}
       {menu && <MobileMenu />}
       {profile && <ProfileMenu />}
       {cart && <Cart />}
