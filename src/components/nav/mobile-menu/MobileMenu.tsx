@@ -39,8 +39,8 @@ const LINKS = [
 export default function MobileMenu() {
   const { closeMenu } = useContext(NavContext);
   return (
-    <section className=" absolute w-[350px] h-[427px] bg-primary text-white  border border-gray-400 shadow-md z-10">
-      <div className=" flex mt-6 flex-col gap-4 px-2">
+    <section className=" absolute w-[350px] h-[400px] left-4 bg-white text-secondary  border border-gray-400 shadow-md z-10">
+      <div className=" flex mt-6 flex-col gap-4 px-4 capitalize">
         {LINKS.map((link) => (
           <Link key={link.id} href={link.href} onClick={closeMenu}>
             {link.name}
