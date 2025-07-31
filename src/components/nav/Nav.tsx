@@ -14,14 +14,32 @@ import MobileMenu from "./mobile-menu/MobileMenu";
 // import Profile from "@/app/profile/page";
 import ProfileMenu from "@/app/profile/ProfileMenu/page";
 import Cart from "../cart/Cart";
+import { toggleCartMenu } from "@/store/cartSlice";
 
 export default function Nav() {
   const { menu, toggleMenu, closeMenu, profile, toggleProfile, closeProfile } = useContext(NavContext);
-  /**
-   * check menu state
-   */
 
-  const cart = useSelector((state: any) => state.cart.cart);
+  // redux for cart
+  const dispatch = useDispatch();
+  const { cart, totalQuantity } = useSelector((state: any) => state.cart);
+
+  useEffect(() => {
+    const element = document.getElementById("app");
+    const handleClickOutside = (event: MouseEvent) => {
+      if (element && element.contains(event.target as Node)) {
+        dispatch(toggleCartMenu());
+      }
+    };
+    if (cart) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [cart, toggleCartMenu]);
 
   useEffect(() => {
     const element = document.getElementById("app");
@@ -75,13 +93,25 @@ export default function Nav() {
 
         <div className="flex flex-row gap-4 justify-between items-center ">
           {/* cart-icon */}
-          <Link href={"/cart"}>
-            <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
-          </Link>
+          {cart ? (
+            <button onClick={() => dispatch(toggleCartMenu())}>
+              <div className="flex  ">
+                {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
+                <MdOutlineClose className="cursor-pointer text-primary hover:text-green-400" />
+              </div>
+            </button>
+          ) : (
+            <button onClick={() => dispatch(toggleCartMenu())}>
+              <div className="flex  ">
+                {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
+                <AiOutlineShoppingCart className="cursor-pointer text-primary hover:text-green-400" />
+              </div>
+            </button>
+          )}
 
           {/* user-icon */}
 
-          {profile ? <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
+          {profile ? <MdOutlineClose className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
           {/* <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" /> */}
         </div>
       </nav>

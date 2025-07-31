@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body id="app" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* top loader */}
 
         <CartProvider>
@@ -54,7 +54,7 @@ export default function RootLayout({
             <Nav />
             {/* button */}
 
-            <main id="app">{children}</main>
+            <main>{children}</main>
             <Footer />
           </NavContextProvider>
         </CartProvider>

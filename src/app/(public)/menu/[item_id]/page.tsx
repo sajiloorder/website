@@ -4,14 +4,12 @@ import { useEffect, useState } from "react";
 import { dummy_menu_items } from "@/lib/data/menu";
 
 import { useSelector, useDispatch } from "react-redux";
-import { open, close, addToCart } from "@/store/cartSlice";
+import { addToCart } from "@/store/cartSlice";
 
 export default function MenuItemPage() {
   // redux cart
   const { cart, items } = useSelector((state: any) => state.cart);
   const dispatch = useDispatch();
-  console.log("cart", cart);
-  console.log("cart", items);
 
   const { item_id } = useParams();
   const [item, setItem] = useState<any>(null);
@@ -32,13 +30,13 @@ export default function MenuItemPage() {
   }
 
   function handleAddToCart() {
-    const item = {
-      id: 1,
-      name: "Steamed Chicken Momo",
-      price: 701.75,
+    const data = {
+      id: item.id,
+      name: item.name,
+      price: item.price,
     };
     console.log("dispatched");
-    dispatch(addToCart(item));
+    dispatch(addToCart(data));
   }
 
   return (
