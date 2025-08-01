@@ -142,7 +142,7 @@ export const dummy_menu_items = [
     category: 1,
     price: 701.75,
     image_url: "/images/burger.jpg",
-    is_available: true,
+    is_available: false,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
     updated_at: "2025-07-21T09:26:35.527665Z"
@@ -350,22 +350,6 @@ export const dummy_menu_items = [
 ]
 
 
-
-// const categories = [
-//     { name: 'Burger', image: '/images/burger.jpg' },
-//     { name: 'Biryani', image: '/images/mutton.jpg' },
-//     { name: 'Momo', image: '/images/chilly momo.jpg' },
-//     { name: 'Roll', image: '/images/chicken katti.jpg' },
-//     { name: 'Drinks', image: '/images/drinks.jpg' },
-//     { name: 'Combo', image: '/images/combo.jpeg' },
-//     { name: 'Sekwa', image: '/images/sekwa.jpg' },
-//     { name: 'Breakfast', image: '/images/burger.jpg' },
-//     { name: 'Salad', image: '/images/salad.jpg' },
-//     { name: 'Pizza', image: '/images/burger.jpg' },
-//     { name: 'Offer', image: '/images/chilly momo.jpg' },
-//     { name: 'Recommended', image: '/images/combo.jpeg' },
-//     { name: 'popular', image: '/images/drinks.jpg' },
-// ];
 
 
 export const categories = [

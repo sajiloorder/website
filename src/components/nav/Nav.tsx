@@ -83,7 +83,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 pt-3 pb-2  ">
+      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 pt-4 pb-2  shadow z-50">
         {menu ? <MdOutlineClose size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} /> : <AiOutlineMenu size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} />}
 
         <div className="flex flex-row gap-2 justify-between items-center  ">
@@ -119,7 +119,7 @@ export default function Nav() {
       {/* side menu */}
 
       {totalQuantity > 0 && (
-        <div className="fixed bottom-0 left-0 w-full bg-white h-[65px] p-2 flex justify-center items-center gap-4">
+        <div className=" z-50 fixed bottom-0 left-0 w-full bg-white h-[65px] p-2 flex justify-center items-center gap-4">
           <p className="font-semibold text-sm">Rs {totalAmount} </p>
           <Link href={"/cart"} className=" flex justify-center  gap-2 items-center text-sm bg-primary px-10 p-2 min-w-fit rounded text-white ">
             {totalQuantity} Checkout <HiArrowLongRight size={20} />

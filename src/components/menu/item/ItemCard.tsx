@@ -1,26 +1,40 @@
 "use client";
-import { ItemType } from "@/lib/types/menu";
-import Link from "next/link";
+import { useState } from "react";
+import { DummyMenuItemType } from "@/lib/types/menu";
+import { IoAddOutline } from "react-icons/io5";
+import DisplayMenuItem from "./DisplayMenuItem";
+import Button from "@/components/ui/buttons/Button";
+
 type ItemCardProps = {
-  item: ItemType;
+  item: DummyMenuItemType;
 };
 
 export default function ItemCard({ item }: ItemCardProps) {
+  const [itemDetails, setItemDetails] = useState<DummyMenuItemType | null>(null);
+
   return (
-    <Link key={item.id} href={`/menu/${item.id}`}>
-      <div key={item.name} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-        <img src={item.image_url} alt={item.name} className="w-full h-40 object-cover" />
-        <div className="p-4 space-y-1">
-          <div className="flex items-center justify-between">
-            <h3 className="font-semibold text-lg">{item.name}</h3>
-            {/* {item.is_popular && <span className="text-xs bg-yellow-400 text-white px-2 py-0.5 rounded-full">Popular</span>} */}
+    <>
+      <button onClick={() => setItemDetails(item)} className=" relative cursor-pointer hover:shadow-lg transition-all duration-300  ">
+        <div key={item.name} className="bg-white rounded-xl shadow-md overflow-hidden  transition">
+          {/* image url will hadle later */}
+          <img src={item.image_url} alt={item.name} className="w-full h-40 object-cover" />
+
+          <div className="flex flex-col p-4 gap-2">
+            <div className="flex  justify-between items-start gap-1">
+              <h3 className="font-semibold text-base text-primary">{item.name}</h3>
+              {/* just button icons */}
+              <div className="cursor-pointer w-fit flex justify-center  items-center gap-2  text-black bg-transparent">
+                <IoAddOutline size={22} className="text-whote" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2 justify-start items-start">
+              <p className="text-sm font-semibold ">Rs. {item.price}</p>
+              <p className="text-sm text-gray-600 text-left line-clamp-2 ">{item?.description}</p>
+            </div>
           </div>
-          <p className="text-sm text-gray-600">{item.description}</p>
-          <p className="text-sm text-gray-500">Category:category name</p>
-          <p className="text-md font-bold text-primary">Rs. {item.price}</p>
-          <p className={`text-sm ${item.is_active ? "text-green-600" : "text-red-500"}`}>{item.is_active ? "Available" : "Out of Stock"}</p>
         </div>
-      </div>
-    </Link>
+      </button>
+      {itemDetails && <DisplayMenuItem item={itemDetails} isOpen={true} onClose={() => setItemDetails(null)} />}
+    </>
   );
 }

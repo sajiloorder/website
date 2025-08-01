@@ -2,24 +2,7 @@
 import React, { useState } from "react";
 import { dummy_menu_items } from "@/lib/data/menu";
 import { categories } from "@/lib/data/menu";
-import Link from "next/link";
-
-/* const categories = [
-  { id: 1, name: "Momo" },
-  { id: 2, name: "Burger" },
-  { id: 3, name: "Pizza" },
-  { id: 4, name: "Drinks" },
-  { id: 6, name: "Chowmein" },
-  { id: 7, name: "Biryani" },
-  { id: 8, name: "Chilly" },
-  { id: 9, name: "Snack" },
-  { id: 10, name: "Sekwa" },
-  { id: 11, name: "Veg" },
-  { id: 12, name: "Roll" },
-  { id: 13, name: "Naan" },
-
-
-]; */
+import ItemCard from "@/components/menu/item/ItemCard";
 
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -56,23 +39,8 @@ const MenuPage = () => {
 
       {/* Menu Items */}
       <div className="grid gap-6 mt-8 sm:grid-cols-2 md:grid-cols-4">
-        {filteredItems.map((item) => (
-          // replace with item card component
-          <Link key={item.id} href={`/menu/${item.id}`}>
-            <div key={item.name} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
-              <img src={item.image_url} alt={item.name} className="w-full h-40 object-cover" />
-              <div className="p-4 space-y-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">{item.name}</h3>
-                  {item.is_popular && <span className="text-xs bg-yellow-400 text-white px-2 py-0.5 rounded-full">Popular</span>}
-                </div>
-                <p className="text-sm text-gray-600">{item.description}</p>
-                <p className="text-sm text-gray-500">Category: {getCategoryName(item.id)}</p>
-                <p className="text-md font-bold text-primary">Rs. {item.price}</p>
-                <p className={`text-sm ${item.is_available ? "text-green-600" : "text-red-500"}`}>{item.is_available ? "Available" : "Out of Stock"}</p>
-              </div>
-            </div>
-          </Link>
+        {filteredItems.map((item: any) => (
+          <ItemCard key={item.id} item={item} />
         ))}
       </div>
     </div>

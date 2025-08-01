@@ -33,7 +33,7 @@ export default function Cart() {
   };
 
   return (
-    <div className=" absolute bg-white right-[50px] top-[55px] h-[50vh] w-[400px] shadow-lg border border-gray-200 ">
+    <div className=" z-40 absolute bg-white right-[0px] top-[49px] min-h-[70vh] max-h-auto w-[400px] shadow-lg border border-gray-200 ">
       <div className="p-4">
         <div className="">
           {items.length == 0 && <p className="text-secondary">Cart is empty</p>}
