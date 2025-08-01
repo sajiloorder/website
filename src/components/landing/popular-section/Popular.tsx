@@ -1,4 +1,3 @@
-// components/BestSellers.tsx
 import SectionHead from "@/components/ui/section/section-head/SectionHead";
 import { dummy_menu_items } from "@/lib/data/menu";
 import ItemCard from "@/components/menu/item/ItemCard";

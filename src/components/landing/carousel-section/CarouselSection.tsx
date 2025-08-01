@@ -32,7 +32,7 @@ const slides = [
 
 export default function AdCarousel() {
   return (
-    <section className="  w-full h-auto px-4 py-4 ">
+    <section className="  w-full h-auto px-4 py-4 my-2 ">
       <Swiper modules={[Autoplay, Pagination]} autoplay={{ delay: 3000, disableOnInteraction: false }} pagination={{ clickable: true }} loop className="rounded-xl overflow-hidden">
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
@@ -43,7 +43,7 @@ export default function AdCarousel() {
                 <h2 className="text-2xl md:text-4xl font-bold">{slide.title}</h2>
                 <p className="text-sm md:text-lg mt-2">{slide.subtitle}</p>
                 <button className=" h-[35px]  mt-4 bg-orange-500 hover:bg-orange-600 px-5 py-2 rounded-full text-white text-sm md:text-base shadow">{slide.btnText}</button>
-         </div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
