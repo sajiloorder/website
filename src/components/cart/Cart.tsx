@@ -1,6 +1,7 @@
 "use client";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
+import Link from "next/link";
 export default function Cart() {
   const { items, totalAmount, totalQuantity } = useSelector(
     (state: any) => state.cart,
@@ -35,84 +36,107 @@ export default function Cart() {
   };
 
   return (
-    <div className=" z-50 fixed bg-white right-[0px] top-16 h-screen max-h-auto w-[400px] shadow-lg border border-gray-200 text-sm ">
-      <div className="p-4">
-        <div className="">
-          {items.length == 0 && <p className="text-secondary">Cart is empty</p>}
+    <aside className="fixed right-0 top-16 z-50 h-[calc(100vh-64px)] w-120 max-w-md bg-white border-l border-border shadow-xl flex flex-col">
+      {/* HEADER */}
+      <div className="flex items-center justify-between p-4 border-b border-border">
+        <div>
+          <h2 className="font-semibold text-lg">Your Cart</h2>
+          <p className="text-sm text-text-muted">
+            {totalQuantity} item{totalQuantity !== 1 ? "s" : ""}
+          </p>
+        </div>
 
-          {/* items */}
+        {items.length > 0 && (
+          <button
+            onClick={handleClearCart}
+            className="text-sm text-danger underline cursor-pointer"
+          >
+            Clear
+          </button>
+        )}
+      </div>
 
-          {items.length > 0 && (
-            <>
-              <div className="w-full  mt-4 ">
-                {items.map((item: any) => (
-                  <div
-                    key={item.id}
-                    className="w-full flex justify-between items-center "
-                  >
-                    <div className="flex flex-col ">
-                      <p className="font-semibold">{item.name}</p>
+      {/* CONTENT */}
+      <div className="flex-1 overflow-y-auto">
+        {items.length === 0 ? (
+          <div className="h-full flex items-center justify-center p-6">
+            <p className="text-text-muted">Your cart is empty</p>
+          </div>
+        ) : (
+          <div className="p-4 space-y-4">
+            {items.map((item: any) => (
+              <div
+                key={item.id}
+                className="border border-border rounded-lg p-4"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-medium">{item.name}</h3>
 
-                      <div className="flex justify-start gap-2 items-center text-sm">
-                        <button
-                          onClick={() =>
-                            handleDecrement(item.id, item.quantity)
-                          }
-                          className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer "
-                        >
-                          -
-                        </button>
-                        <p>{item.quantity}</p>
-                        <button
-                          onClick={() =>
-                            handleIncrement(item.id, item.quantity)
-                          }
-                          className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer "
-                        >
-                          +
-                        </button>
-                      </div>
-                    </div>
-                    <div className="text-sm text-black mt">
-                      <p>
-                        Rs {item.price} x {item.quantity}
-                      </p>
-                      <button
-                        onClick={() => handleRemoveItem(item.id)}
-                        className="text-red-600 text-xs underline cursor-pointer "
-                      >
-                        Remove Item
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                <div className="flex ">
-                  <div className=" w-full flex flex-col gap-2 my-5">
-                    <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Amount: ${totalAmount.toFixed(2)}</p>
-                    <button
-                      onClick={handleClearCart}
-                      className="mt-2 bg-red-500 text-white px-4 py-2"
-                    >
-                      Clear Cart
-                    </button>
+                    <p className="text-sm text-text-muted">
+                      Rs {item.price} each
+                    </p>
                   </div>
 
-                  {/*  */}
-                  <div className="absolute w-full bottom-25 left-0 flex justify-center items-center h-auto p-6 ">
+                  <div className="text-right">
+                    <p className="font-medium">
+                      Rs {(item.price * item.quantity).toFixed(2)}
+                    </p>
+
                     <button
-                      onClick={() => {}}
-                      className={`w-full min-w-fit px-10 py-2 bg-primary hover:bg-primary-dark cursor-pointer text-white rounded-md  transition `}
+                      onClick={() => handleRemoveItem(item.id)}
+                      className="text-xs text-danger underline cursor-pointer"
                     >
-                      Checkout
+                      Remove
                     </button>
                   </div>
                 </div>
+
+                {/* QUANTITY */}
+                <div className="flex items-center gap-3 mt-4">
+                  <button
+                    onClick={() => handleDecrement(item.id, item.quantity)}
+                    className="h-8 w-8 border border-border rounded cursor-pointer"
+                  >
+                    -
+                  </button>
+
+                  <span className="min-w-6 text-center">{item.quantity}</span>
+
+                  <button
+                    onClick={() => handleIncrement(item.id, item.quantity)}
+                    className="h-8 w-8 border border-border rounded cursor-pointer"
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-            </>
-          )}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+
+      {/* FOOTER */}
+      {items.length > 0 && (
+        <div className="border-t border-border p-4 bg-background">
+          <div className="flex justify-between text-sm mb-2">
+            <span>Total Items</span>
+            <span>{totalQuantity}</span>
+          </div>
+
+          <div className="flex justify-between font-semibold text-lg mb-4">
+            <span>Total</span>
+            <span>Rs {totalAmount.toFixed(2)}</span>
+          </div>
+
+          <Link
+            href={"/checkout"}
+            className="w-full bg-primary text-white py-3 rounded-md font-medium hover:opacity-90 transition cursor-pointer"
+          >
+            Checkout
+          </Link>
+        </div>
+      )}
+    </aside>
   );
 }

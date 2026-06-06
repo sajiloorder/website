@@ -22,9 +22,11 @@ import useMenu from "@/hooks/useMenu";
 
 import SetLocationButton from "../set-location/SetLocationButton";
 import MenuSearch from "../menu/item/MenuSearch";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const { active, open, close } = useMenu();
+  const pathname = usePathname();
 
   const { totalQuantity, totalAmount } = useSelector(
     (state: any) => state.cart,
@@ -100,12 +102,12 @@ export default function Nav() {
       </nav>
 
       {/* CHECKOUT BAR */}
-      {totalQuantity > 0 && (
+      {totalQuantity > 0 && pathname !== "/checkout" && (
         <div className="z-50 fixed bottom-0 left-0 w-full bg-white h-[65px] px-4 flex items-center justify-between border-t border-border">
           <p className="font-semibold text-sm">Rs {totalAmount}</p>
 
           <Link
-            href="/cart"
+            href="/checkout"
             className="flex items-center gap-2 text-sm bg-primary px-6 py-2 rounded text-white"
           >
             {totalQuantity} Checkout <HiArrowLongRight size={18} />
