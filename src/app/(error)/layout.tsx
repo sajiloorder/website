@@ -1,9 +1,7 @@
 import "@/app/globals.css";
-import Nav from "@/components/nav/Nav";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import NavContextProvider from "@/context/NavContext";
-import Footer from "@/components/footer/Footer";
 import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({

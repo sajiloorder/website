@@ -1,7 +1,29 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initalState = {
+/**
+ * @typedef {{
+ *   id: string | number;
+ *   name?: string;
+ *   price: number;
+ *   quantity: number;
+ *   [key: string]: unknown;
+ * }} CartItem
+ */
+/**
+ * @typedef {{
+ *   cartMenu: boolean;
+ *   items: CartItem[];
+ *   totalAmount: number;
+ *   totalQuantity: number;
+ * }} CartState
+ */
+/**
+ * @typedef {import('@reduxjs/toolkit').Draft<CartState>} DraftCartState
+ */
+
+/** @type {CartState} */
+const initialState = {
   cartMenu: false,
   items: [],
   totalAmount: 0,
@@ -9,43 +31,51 @@ const initalState = {
 };
 const cartSlice = createSlice({
   name: "cart",
-  initialState: initalState,
+  initialState,
   reducers: {
     toggleCartMenu: (state) => {
-      state.cart = !state.cart;
+      state.cartMenu = !state.cartMenu;
     },
     closeCartMenu: (state) => {
-      state.cart = false;
+      state.cartMenu = false;
     },
+    /**
+     * @param {DraftCartState} state
+     * @param {{payload: Omit<CartItem, 'quantity'> & {id: string | number; price: number}}} action
+     */
     addToCart(state, action) {
-      
       const item = action.payload;
-
-      const exitingItem = state.items.find((i) => i.id == item.id);
-      if (exitingItem) {
-        exitingItem.quantity += 1;
+      const existingItem = state.items.find((i) => i.id === item.id);
+      if (existingItem) {
+        existingItem.quantity += 1;
       } else {
         state.items.push({ ...item, quantity: 1 });
       }
-      state.totalQuantity +=1 
+      state.totalQuantity += 1;
       state.totalAmount += item.price;
-
     },
+    /**
+     * @param {DraftCartState} state
+     * @param {{payload: {id: string | number}}} action
+     */
     removeFromCart(state, action) {
-      const id = action.payload.id
-      const item = state.items.find(item=> item.id == id)
-      if(!item) {
-        console.log("item not found")
+      const id = action.payload.id;
+      const item = state.items.find((item) => item.id === id);
+      if (!item) {
+        return;
       }
 
-      state.totalQuantity -= item.quantity
-      state.totalAmount -= item.price * item.quantity
-      state.items = state.items.filter(item => item.id !== id)
-    
+      state.totalQuantity -= item.quantity;
+      state.totalAmount -= item.price * item.quantity;
+      state.items = state.items.filter((item) => item.id !== id);
     },
-     updateQuantity(state, action) {
+    /**
+     * @param {DraftCartState} state
+     * @param {{payload: {id: string | number; quantity: number}}} action
+     */
+    updateQuantity(state, action) {
       const { id, quantity } = action.payload;
-      const item = state.items.find(i => i.id === id);
+      const item = state.items.find((i) => i.id === id);
       if (!item || quantity < 1) return;
 
       const quantityDiff = quantity - item.quantity;
@@ -58,19 +88,27 @@ const cartSlice = createSlice({
       state.totalQuantity = 0;
       state.totalAmount = 0;
     },
+    /**
+     * @param {DraftCartState} state
+     * @param {{payload: Partial<CartState>}} action
+     */
     hydrateCart(state, action) {
-    return {
-      ...state,
-      ...action.payload,
-    };
-  }
- 
-
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
   },
 });
 
-
-
-export const {toggleCartMenu, closeCartMenu, addToCart, removeFromCart, updateQuantity, clearCart,hydrateCart } = cartSlice.actions;
+export const {
+  toggleCartMenu,
+  closeCartMenu,
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+  hydrateCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

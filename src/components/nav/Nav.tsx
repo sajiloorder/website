@@ -15,8 +15,8 @@ import { MdOutlineClose } from "react-icons/md";
 import { HiArrowLongRight } from "react-icons/hi2";
 
 import MobileMenu from "./mobile-menu/MobileMenu";
-import ProfileMenu from "@/app/profile/ProfileMenu/page";
 import Cart from "../cart/Cart";
+import ProfileMenu from "@/app/profile/ProfileMenu/page";
 
 import useMenu from "@/hooks/useMenu";
 
@@ -28,8 +28,14 @@ export default function Nav() {
   const { active, open, close } = useMenu();
   const pathname = usePathname();
 
+  interface CartState {
+    items: { id: string | number; quantity: number }[];
+    totalAmount: number;
+    totalQuantity: number;
+  }
+
   const { totalQuantity, totalAmount } = useSelector(
-    (state: any) => state.cart,
+    (state: { cart: CartState }) => state.cart,
   );
 
   const isMenuOpen = active === "menu";

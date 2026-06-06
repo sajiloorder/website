@@ -5,9 +5,22 @@ import Link from "next/link";
 import useOrder from "@/hooks/useOrder";
 import CartControls from "@/components/cart-controls/CartControls";
 
+type CartItem = {
+  id: string | number;
+  name: string;
+  price: number;
+  quantity: number;
+};
+
+interface CartState {
+  items: CartItem[];
+  totalAmount: number;
+  totalQuantity: number;
+}
+
 export default function CheckoutPage() {
   const { items, totalAmount, totalQuantity } = useSelector(
-    (state: any) => state.cart,
+    (state: { cart: CartState }) => state.cart,
   );
 
   const { deliveryType, address, startOrder } = useOrder();
@@ -46,7 +59,7 @@ export default function CheckoutPage() {
             </div>
           ) : (
             <div className="space-y-3">
-              {items.map((item: any) => (
+              {items.map((item) => (
                 <div
                   key={item.id}
                   className="flex justify-between items-center border border-border rounded p-3 bg-white"

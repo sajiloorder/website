@@ -3,7 +3,14 @@
 import { useDispatch } from "react-redux";
 import { updateQuantity, removeFromCart } from "@/store/cartSlice";
 
-export default function CartControls({ item }: any) {
+interface CartControlsProps {
+  item: {
+    id: string | number;
+    quantity: number;
+  };
+}
+
+export default function CartControls({ item }: CartControlsProps) {
   const dispatch = useDispatch();
 
   const handleIncrease = () => {

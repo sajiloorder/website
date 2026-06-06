@@ -10,7 +10,7 @@ export default function StartOrderSection() {
       {/* TEXT */}
       <div className="flex flex-col">
         <h2 className="text-lg font-semibold text-text">
-          Let's get your order started
+          Let&apos;s get your order started
         </h2>
 
         <p className="text-sm text-text-muted">

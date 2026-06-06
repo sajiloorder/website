@@ -2,7 +2,7 @@
 import Footer from "@/components/footer/Footer";
 import Nav from "@/components/nav/Nav";
 import NavContextProvider from "@/context/NavContext";
-import { OrderContext, OrderProvider } from "@/context/OrderContext";
+import { OrderProvider } from "@/context/OrderContext";
 import store from "@/store";
 import CartProvider from "@/store/CartProvider";
 import NextTopLoader from "nextjs-toploader";

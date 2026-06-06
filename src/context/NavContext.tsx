@@ -2,10 +2,9 @@
 
 import {
   createContext,
-  useContext,
   useState,
   ReactNode,
-  useEffect,
+
 } from "react";
 
 type NavState = "none" | "menu" | "profile" | "cart";

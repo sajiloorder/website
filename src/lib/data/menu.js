@@ -7,47 +7,51 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: true,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 2,
     name: "Chowmein ",
-    description: "Stir-fried noodles served with vegetables, chicken, or buff – a local fast food favorite.",
+    description:
+      "Stir-fried noodles served with vegetables, chicken, or buff – a local fast food favorite.",
     image: "/images/drinks.jpg",
     is_active: true,
     is_highlighted: true,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 3,
     name: "Burgers ",
-    description: "Juicy burgers and stuffed sandwiches made with local and international flavors.",
+    description:
+      "Juicy burgers and stuffed sandwiches made with local and international flavors.",
     image: "/images/combo.jpeg",
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 4,
     name: "Pizza",
-    description: "Hot and cheesy pizzas with a variety of toppings, from veggie to meat lovers.",
+    description:
+      "Hot and cheesy pizzas with a variety of toppings, from veggie to meat lovers.",
     image: "/images/combo.jpeg",
     is_active: true,
     is_highlighted: true,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 5,
     name: "Indian ",
-    description: "Spicy and flavorful curries, biryanis, and thali sets inspired by Indian cuisine.",
+    description:
+      "Spicy and flavorful curries, biryanis, and thali sets inspired by Indian cuisine.",
     image: "/images/chilly momo.jpg",
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 6,
@@ -57,17 +61,18 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 7,
     name: "Drinks",
-    description: "Chilled beverages, milk teas, soft drinks, and a wide selection of alcoholic drinks.",
+    description:
+      "Chilled beverages, milk teas, soft drinks, and a wide selection of alcoholic drinks.",
     image: "/images/combo.jpeg",
     is_active: true,
     is_highlighted: true,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 8,
@@ -77,7 +82,7 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 9,
@@ -87,7 +92,7 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 10,
@@ -97,7 +102,7 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 11,
@@ -107,7 +112,7 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 12,
@@ -117,7 +122,7 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
   {
     id: 13,
@@ -127,25 +132,23 @@ export const dummy_menu_categories = [
     is_active: true,
     is_highlighted: false,
     created_at: "2025-07-21T12:00:00Z",
-    updated_at: "2025-07-21T12:00:00Z"
+    updated_at: "2025-07-21T12:00:00Z",
   },
-
-
-]
-
+];
 
 export const dummy_menu_items = [
   {
     id: 1,
     name: "Steamed Chicken Momo",
-    description: "Tasty steamed chicken momo prepared fresh with local ingredients.",
+    description:
+      "Tasty steamed chicken momo prepared fresh with local ingredients.",
     category: 1,
     price: 701.75,
     image_url: "/images/burger.jpg",
     is_available: false,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 2,
@@ -153,11 +156,11 @@ export const dummy_menu_items = [
     description: "Tasty fried veg momo prepared fresh with local ingredients.",
     category: "momo",
     price: 781.39,
-    image_url: '/images/chilly momo.jpg',
+    image_url: "/images/chilly momo.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 3,
@@ -165,23 +168,24 @@ export const dummy_menu_items = [
     description: "Tasty buff jhol momo prepared fresh with local ingredients.",
     category: 1,
     price: 743.9,
-    image_url: '/images/drinks.jpg',
+    image_url: "/images/drinks.jpg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 4,
     name: "Chicken Chowmein",
-    description: "Nepali-style stir-fried noodles with chicken and seasonal vegetables.",
+    description:
+      "Nepali-style stir-fried noodles with chicken and seasonal vegetables.",
     category: 2,
     price: 820.5,
-    image_url: '/images/mutton.jpg',
+    image_url: "/images/mutton.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 5,
@@ -189,11 +193,11 @@ export const dummy_menu_items = [
     description: "Classic buff chowmein with tangy sauces and crunchy veggies.",
     category: 2,
     price: 795.2,
-    image_url: '/images/drinks.jpg',
+    image_url: "/images/drinks.jpg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 6,
@@ -201,23 +205,24 @@ export const dummy_menu_items = [
     description: "Simple and satisfying vegetable noodles made with love.",
     category: 6,
     price: 705.9,
-    image_url: '/images/mutton.jpg',
+    image_url: "/images/mutton.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 7,
     name: "Chicken Burger",
-    description: "Crispy fried chicken patty with lettuce and mayo in a toasted bun.",
+    description:
+      "Crispy fried chicken patty with lettuce and mayo in a toasted bun.",
     category: 7,
     price: 699.5,
-    image_url: '/images/chilly momo.jpg',
+    image_url: "/images/chilly momo.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 8,
@@ -229,7 +234,7 @@ export const dummy_menu_items = [
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 9,
@@ -237,23 +242,24 @@ export const dummy_menu_items = [
     description: "Medium-sized pizza topped with chicken, onion, and capsicum.",
     category: 2,
     price: 1185.0,
-    image_url: '/images/mutton.jpg',
+    image_url: "/images/mutton.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 10,
     name: "Veg Pizza",
-    description: "Veggie delight pizza with cheese, tomato, olives, and jalapeños.",
+    description:
+      "Veggie delight pizza with cheese, tomato, olives, and jalapeños.",
     category: 10,
     price: 1080.0,
     image_url: "/images/burger.jpg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 11,
@@ -264,7 +270,7 @@ export const dummy_menu_items = [
     image_url: "/images/burger.jpg",
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 12,
@@ -272,21 +278,24 @@ export const dummy_menu_items = [
     description: "Fragrant rice layered with chicken and Indian spices.",
     category: 5,
     price: 1100.0,
-    image_url: '/images/combo.jpeg',
+    image_url: "/images/combo.jpeg",
+    is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 13,
     name: "Mixed Thali Set",
-    description: "Complete Nepali-Indian thali with rice, dal, curry, pickle, and curd.",
+    description:
+      "Complete Nepali-Indian thali with rice, dal, curry, pickle, and curd.",
     category: 5,
     price: 980.0,
     image_url: "/images/burger.jpg",
+    is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 14,
@@ -294,11 +303,11 @@ export const dummy_menu_items = [
     description: "Soft and chocolatey donut glazed with dark chocolate.",
     category: 6,
     price: 230.0,
-    image_url: '/images/combo.jpeg',
+    image_url: "/images/combo.jpeg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 15,
@@ -306,11 +315,11 @@ export const dummy_menu_items = [
     description: "Crispy puff stuffed with spiced vegetables.",
     category: 6,
     price: 120.0,
-    image_url: '/images/combo.jpeg',
+    image_url: "/images/combo.jpeg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 16,
@@ -318,11 +327,11 @@ export const dummy_menu_items = [
     description: "Chilled tea with lemon and mint, perfect for summer.",
     category: 7,
     price: 330.0,
-    image_url: '/images/chilly momo.jpg',
+    image_url: "/images/chilly momo.jpg",
     is_available: true,
     is_popular: false,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 17,
@@ -330,10 +339,11 @@ export const dummy_menu_items = [
     description: "Sweet cold milk tea with tapioca pearls.",
     category: 7,
     price: 360.0,
-    image_url: '/images/chicken katti.jpg',
+    image_url: "/images/chicken katti.jpg",
+    is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
+    updated_at: "2025-07-21T09:26:35.527665Z",
   },
   {
     id: 18,
@@ -341,16 +351,13 @@ export const dummy_menu_items = [
     description: "Premium lager beer served chilled.",
     category: 7,
     price: 470.0,
-    image_url: '/images/chicken katti.jpg',
+    image_url: "/images/chicken katti.jpg",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
-    updated_at: "2025-07-21T09:26:35.527665Z"
-  }
-]
-
-
-
+    updated_at: "2025-07-21T09:26:35.527665Z",
+  },
+];
 
 export const categories = [
   { id: 1, name: "Momo" },
@@ -365,4 +372,4 @@ export const categories = [
   { id: 11, name: "Veg" },
   { id: 12, name: "Roll" },
   { id: 13, name: "Naan" },
-]
+];

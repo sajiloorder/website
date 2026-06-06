@@ -2,13 +2,27 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
 import Link from "next/link";
+
+type CartItem = {
+  id: string | number;
+  name: string;
+  price: number;
+  quantity: number;
+};
+
+interface CartState {
+  items: CartItem[];
+  totalAmount: number;
+  totalQuantity: number;
+}
+
 export default function Cart() {
   const { items, totalAmount, totalQuantity } = useSelector(
-    (state: any) => state.cart,
+    (state: { cart: CartState }) => state.cart,
   );
   const dispatch = useDispatch();
 
-  const handleDecrement = (id: any, quantity: number) => {
+  const handleDecrement = (id: string | number, quantity: number) => {
     //
     dispatch(
       updateQuantity({
@@ -18,7 +32,7 @@ export default function Cart() {
     );
   };
 
-  const handleIncrement = (id: any, quantity: number) => {
+  const handleIncrement = (id: string | number, quantity: number) => {
     //
     dispatch(
       updateQuantity({
@@ -64,7 +78,7 @@ export default function Cart() {
           </div>
         ) : (
           <div className="p-4 space-y-4">
-            {items.map((item: any) => (
+            {items.map((item) => (
               <div
                 key={item.id}
                 className="border border-border rounded-lg p-4"

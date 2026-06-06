@@ -2,19 +2,18 @@
 import React from "react";
 import { DummyMenuItemType } from "@/lib/types/menu";
 import { IoCloseOutline } from "react-icons/io5";
-import { useSelector, useDispatch } from "react-redux";
-import { addToCart, closeCartMenu } from "@/store/cartSlice";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/buttons/Button";
 
 type ModalProps = {
   item: DummyMenuItemType;
-  isOpen: boolean;
   onClose: () => void;
 };
 
 import useOrder from "@/hooks/useOrder";
 
-export default function DisplayMenuItem({ item, isOpen, onClose }: ModalProps) {
+export default function DisplayMenuItem({ item, onClose }: ModalProps) {
   const dispatch = useDispatch();
 
   const { deliveryType, address, startOrder } = useOrder();

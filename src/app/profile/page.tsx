@@ -1,7 +1,4 @@
-/* "use client";
-import { useContext } from "react";
-import { useMenu } from "@/context/nav-context";
-
+"use client";
 import Link from "next/link";
 
 const LINKS = [
@@ -36,13 +33,13 @@ const LINKS = [
     href: "/contact",
   },
 ];
+
 export default function Profile() {
-  const { closeProfile } = useMenu();
   return (
-    <section className=" absolute w-[350px] h-[427px] bg-primary text-white  border border-gray-400 shadow-md z-10">
-      <div className=" flex mt-6 flex-col gap-4 px-2">
+    <section className="absolute w-[350px] h-[427px] bg-primary text-white border border-gray-400 shadow-md z-10">
+      <div className="flex mt-6 flex-col gap-4 px-2">
         {LINKS.map((link) => (
-          <Link key={link.id} href={link.href} onClick={closeProfile}>
+          <Link key={link.id} href={link.href}>
             {link.name}
           </Link>
         ))}
@@ -50,4 +47,3 @@ export default function Profile() {
     </section>
   );
 }
- */
