@@ -11,7 +11,7 @@ export default function LandingPage() {
   return (
     <MainLayout>
       {/*nav section */}
-      {/* hero section */} <HeroSection item={dummy_main_hero} />
+      {/* hero section <HeroSection item={dummy_main_hero} /> */}
       <CarouselSection />
       {/* category section */}
       <Category />
