@@ -32,7 +32,7 @@ export default function ProfileMenu() {
           />
 
           <div className="leading-tight">
-            <h2 className="text-base font-semibold">M Bappe</h2>
+            <h2 className="text-base font-semibold">M Ronaldo</h2>
             <p className="text-xs text-white/70">Location</p>
           </div>
         </div>
