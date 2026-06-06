@@ -1,6 +1,6 @@
 /* "use client";
 import { useContext } from "react";
-import { NavContext } from "@/context/nav-context";
+import { useMenu } from "@/context/nav-context";
 
 import Link from "next/link";
 
@@ -37,7 +37,7 @@ const LINKS = [
   },
 ];
 export default function Profile() {
-  const { closeProfile } = useContext(NavContext);
+  const { closeProfile } = useMenu();
   return (
     <section className=" absolute w-[350px] h-[427px] bg-primary text-white  border border-gray-400 shadow-md z-10">
       <div className=" flex mt-6 flex-col gap-4 px-2">

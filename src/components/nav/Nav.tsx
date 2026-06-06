@@ -1,134 +1,113 @@
 "use client";
 
-import { useContext, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
+import { useSelector } from "react-redux";
+
 import Logo from "../ui/logo/Logo";
-import { AiOutlineMenu } from "react-icons/ai";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { AiOutlineUser } from "react-icons/ai";
+
+import {
+  AiOutlineMenu,
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+} from "react-icons/ai";
+
 import { MdOutlineClose } from "react-icons/md";
 import { HiArrowLongRight } from "react-icons/hi2";
 
-import { NavContext } from "@/context/nav-context";
 import MobileMenu from "./mobile-menu/MobileMenu";
-// import Profile from "@/app/profile/page";
 import ProfileMenu from "@/app/profile/ProfileMenu/page";
 import Cart from "../cart/Cart";
-import { toggleCartMenu } from "@/store/cartSlice";
+
+import useMenu from "@/app/hooks/useMenu";
 
 export default function Nav() {
-  const { menu, toggleMenu, closeMenu, profile, toggleProfile, closeProfile } = useContext(NavContext);
+  const { active, open, close } = useMenu();
 
-  // redux for cart
-  const dispatch = useDispatch();
-  const { cart, totalQuantity, totalAmount } = useSelector((state: any) => state.cart);
+  const { totalQuantity, totalAmount } = useSelector(
+    (state: any) => state.cart,
+  );
 
-  useEffect(() => {
-    const element = document.getElementById("app");
-    const handleClickOutside = (event: MouseEvent) => {
-      if (element && element.contains(event.target as Node)) {
-        dispatch(toggleCartMenu());
-      }
-    };
-    if (cart) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [cart, toggleCartMenu]);
-
-  useEffect(() => {
-    const element = document.getElementById("app");
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (element && element.contains(event.target as Node)) {
-        closeMenu();
-      }
-    };
-    if (menu) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [menu, closeMenu]);
-
-  // profile menu, if clicked outside close #app from
-  useEffect(() => {
-    const element = document.getElementById("app");
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (element && element.contains(event.target as Node)) {
-        closeProfile();
-      }
-    };
-    if (profile) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [profile, closeProfile]);
+  const isMenuOpen = active === "menu";
+  const isProfileOpen = active === "profile";
+  const isCartOpen = active === "cart";
 
   return (
     <>
-      <nav className=" flex flex-row bg-white text-primary justify-between items-center mb-2 px-6 pt-4 pb-2  shadow z-50">
-        {menu ? <MdOutlineClose size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} /> : <AiOutlineMenu size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleMenu} />}
-
-        <div className="flex flex-row gap-2 justify-between items-center  ">
-          <Link href="/">
-            <Logo />
-          </Link>
-        </div>
-
-        <div className="flex flex-row gap-4 justify-between items-center ">
-          {/* cart-icon */}
-          {cart ? (
-            <button onClick={() => dispatch(toggleCartMenu())}>
-              <div className="flex   ">
-                {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
-                <MdOutlineClose size={18} className="cursor-pointer text-primary hover:text-green-400" />
-              </div>
-            </button>
+      <nav className="fixed top-0 left-0 w-full z-50 flex flex-row justify-between px-6 py-3 border border-border bg-background">
+        {" "}
+        {/* MENU BUTTON */}
+        <button onClick={() => open("menu")}>
+          {isMenuOpen ? (
+            <MdOutlineClose
+              size={18}
+              className="cursor-pointer hover:text-green-400"
+            />
           ) : (
-            <button onClick={() => dispatch(toggleCartMenu())}>
-              <div className="flex  ">
-                {totalQuantity > 0 && <span className="text-xs font-semibold">{totalQuantity}</span>}
-                <AiOutlineShoppingCart size={18} className="cursor-pointer text-primary hover:text-green-400" />
-              </div>
-            </button>
+            <AiOutlineMenu
+              size={18}
+              className="cursor-pointer hover:text-green-400"
+            />
           )}
+        </button>
+        {/* LOGO */}
+        <Link href="/" onClick={close}>
+          <Logo />
+        </Link>
+        {/* RIGHT ACTIONS */}
+        <div className="flex flex-row gap-4 items-center">
+          {/* CART */}
+          <button onClick={() => (isCartOpen ? close() : open("cart"))}>
+            <div className="flex items-center gap-1">
+              {totalQuantity > 0 && (
+                <span className="text-xs font-semibold">{totalQuantity}</span>
+              )}
 
-          {/* user-icon */}
+              {isCartOpen ? (
+                <MdOutlineClose size={18} />
+              ) : (
+                <AiOutlineShoppingCart size={18} />
+              )}
+            </div>
+          </button>
 
-          {profile ? <MdOutlineClose size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} /> : <AiOutlineUser size={18} className="cursor-pointer  hover:text-green-400" onClick={toggleProfile} />}
-          {/* <AiOutlineUser className="cursor-pointer text-primary  hover:text-green-400" /> */}
+          {/* PROFILE */}
+          <button onClick={() => open("profile")}>
+            {isProfileOpen ? (
+              <MdOutlineClose size={18} />
+            ) : (
+              <AiOutlineUser size={18} />
+            )}
+          </button>
         </div>
       </nav>
-      {/* side menu */}
 
+      {/* BOTTOM CHECKOUT BAR */}
       {totalQuantity > 0 && (
-        <div className=" z-50 fixed bottom-0 left-0 w-full bg-white h-[65px] p-2 flex justify-center items-center gap-4">
-          <p className="font-semibold text-sm">Rs {totalAmount} </p>
-          <Link href={"/cart"} className=" flex justify-center  gap-2 items-center text-sm bg-primary px-10 p-2 min-w-fit rounded text-white ">
+        <div className="z-50 fixed bottom-0 left-0 w-full bg-white h-[65px] p-2 flex justify-center items-center gap-4">
+          <p className="font-semibold text-sm">Rs {totalAmount}</p>
+
+          <Link
+            href="/cart"
+            className="flex items-center gap-2 text-sm bg-primary px-10 py-2 rounded text-white"
+          >
             {totalQuantity} Checkout <HiArrowLongRight size={20} />
           </Link>
         </div>
       )}
-      {menu && <MobileMenu />}
-      {profile && <ProfileMenu />}
-      {cart && <Cart />}
+
+      {/* CONDITIONAL PANELS (ONLY ONE CAN BE OPEN NOW) */}
+      {/* OVERLAY (click to close all) */}
+      {active !== "none" && (
+        <div
+          onClick={close}
+          className="fixed inset-0 bg-black/40 z-40 cursor-pointer"
+        />
+      )}
+
+      {/* PANELS */}
+      {isMenuOpen && <MobileMenu />}
+      {isProfileOpen && <ProfileMenu />}
+      {isCartOpen && <Cart />}
     </>
   );
 }
