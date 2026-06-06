@@ -2,6 +2,7 @@
 import Footer from "@/components/footer/Footer";
 import Nav from "@/components/nav/Nav";
 import NavContextProvider from "@/context/NavContext";
+import { OrderContext, OrderProvider } from "@/context/OrderContext";
 import store from "@/store";
 import CartProvider from "@/store/CartProvider";
 import NextTopLoader from "nextjs-toploader";
@@ -30,15 +31,17 @@ export default function HomeLayout({
         zIndex={1600}
         showAtBottom={false}
       />
+
       <Provider store={store}>
-        <CartProvider />
-        <NavContextProvider>
-          <Nav />
-          {/* button */}
-          {/* layout wrapper */}
-          <main
-            id="app"
-            className=" mx-auto
+        <OrderProvider>
+          <CartProvider />
+          <NavContextProvider>
+            <Nav />
+            {/* button */}
+            {/* layout wrapper */}
+            <main
+              id="app"
+              className=" mx-auto
                         w-full
                         max-w-screen-2xl
                         px-4
@@ -48,14 +51,15 @@ export default function HomeLayout({
                         xl:px-12
                         hideen
                         2xl:px-16
-                        mt-16
+                        mt-20
                         "
-          >
-            {children}
-          </main>
-          <div id="modal-root"></div>
-          <Footer />
-        </NavContextProvider>
+            >
+              {children}
+            </main>
+            <div id="modal-root"></div>
+            <Footer />
+          </NavContextProvider>
+        </OrderProvider>
       </Provider>
     </>
   );

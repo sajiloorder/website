@@ -2,7 +2,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
 export default function Cart() {
-  const { items, totalAmount, totalQuantity } = useSelector((state: any) => state.cart);
+  const { items, totalAmount, totalQuantity } = useSelector(
+    (state: any) => state.cart,
+  );
   const dispatch = useDispatch();
 
   const handleDecrement = (id: any, quantity: number) => {
@@ -11,7 +13,7 @@ export default function Cart() {
       updateQuantity({
         id: id,
         quantity: quantity - 1,
-      })
+      }),
     );
   };
 
@@ -21,7 +23,7 @@ export default function Cart() {
       updateQuantity({
         id: id,
         quantity: quantity + 1,
-      })
+      }),
     );
   };
 
@@ -33,7 +35,7 @@ export default function Cart() {
   };
 
   return (
-    <div className=" z-40 absolute bg-white right-[0px] top-[49px] min-h-[70vh] max-h-auto w-[400px] shadow-lg border border-gray-200 ">
+    <div className=" z-50 fixed bg-white right-[0px] top-16 h-screen max-h-auto w-[400px] shadow-lg border border-gray-200 text-sm ">
       <div className="p-4">
         <div className="">
           {items.length == 0 && <p className="text-secondary">Cart is empty</p>}
@@ -44,16 +46,29 @@ export default function Cart() {
             <>
               <div className="w-full  mt-4 ">
                 {items.map((item: any) => (
-                  <div key={item.id} className="w-full flex justify-between items-center ">
+                  <div
+                    key={item.id}
+                    className="w-full flex justify-between items-center "
+                  >
                     <div className="flex flex-col ">
                       <p className="font-semibold">{item.name}</p>
 
                       <div className="flex justify-start gap-2 items-center text-sm">
-                        <button onClick={() => handleDecrement(item.id, item.quantity)} className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer ">
+                        <button
+                          onClick={() =>
+                            handleDecrement(item.id, item.quantity)
+                          }
+                          className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer "
+                        >
                           -
                         </button>
                         <p>{item.quantity}</p>
-                        <button onClick={() => handleIncrement(item.id, item.quantity)} className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer ">
+                        <button
+                          onClick={() =>
+                            handleIncrement(item.id, item.quantity)
+                          }
+                          className="p-1 h-[25px] w-[25px] border-[0.5px] border-primary cursor-pointer "
+                        >
                           +
                         </button>
                       </div>
@@ -62,7 +77,10 @@ export default function Cart() {
                       <p>
                         Rs {item.price} x {item.quantity}
                       </p>
-                      <button onClick={() => handleRemoveItem(item.id)} className="text-red-600 text-xs underline cursor-pointer ">
+                      <button
+                        onClick={() => handleRemoveItem(item.id)}
+                        className="text-red-600 text-xs underline cursor-pointer "
+                      >
                         Remove Item
                       </button>
                     </div>
@@ -72,14 +90,20 @@ export default function Cart() {
                   <div className=" w-full flex flex-col gap-2 my-5">
                     <p>Total Quantity: {totalQuantity}</p>
                     <p>Total Amount: ${totalAmount.toFixed(2)}</p>
-                    <button onClick={handleClearCart} className="mt-2 bg-red-500 text-white px-4 py-2">
+                    <button
+                      onClick={handleClearCart}
+                      className="mt-2 bg-red-500 text-white px-4 py-2"
+                    >
                       Clear Cart
                     </button>
                   </div>
 
                   {/*  */}
-                  <div className="absolute w-full bottom-10 left-0 flex justify-center items-center h-auto  ">
-                    <button onClick={() => {}} className={` min-w-fit px-10 py-2 bg-primary hover:bg-primary-dark cursor-pointer text-white rounded-md text-lg transition `}>
+                  <div className="absolute w-full bottom-25 left-0 flex justify-center items-center h-auto p-6 ">
+                    <button
+                      onClick={() => {}}
+                      className={`w-full min-w-fit px-10 py-2 bg-primary hover:bg-primary-dark cursor-pointer text-white rounded-md  transition `}
+                    >
                       Checkout
                     </button>
                   </div>

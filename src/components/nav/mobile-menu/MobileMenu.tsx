@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import useMenu from "@/app/hooks/useMenu";
+import useMenu from "@/hooks/useMenu";
 
 const LINKS = [
   { id: 1, name: "home", href: "/" },

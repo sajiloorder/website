@@ -18,7 +18,7 @@ import MobileMenu from "./mobile-menu/MobileMenu";
 import ProfileMenu from "@/app/profile/ProfileMenu/page";
 import Cart from "../cart/Cart";
 
-import useMenu from "@/app/hooks/useMenu";
+import useMenu from "@/hooks/useMenu";
 
 import SetLocationButton from "../set-location/SetLocationButton";
 import MenuSearch from "../menu/item/MenuSearch";
@@ -39,7 +39,7 @@ export default function Nav() {
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-background border-b border-border">
         <div className="flex items-center justify-between px-4 py-3">
-          {/* LEFT SECTION */}
+          {/* LEFT */}
           <div className="flex items-center gap-3">
             {/* MENU */}
             <button onClick={() => open("menu")}>
@@ -49,24 +49,26 @@ export default function Nav() {
                 <AiOutlineMenu size={18} />
               )}
             </button>
+
+            {/* LOGO (hidden on small screens if needed) */}
             <Link href="/" onClick={close}>
               <Logo />
             </Link>
-            <div className="hidden md:block">
-              <SetLocationButton />
-            </div>
+            <SetLocationButton />
+          </div>
 
-            <div className="hidden md:flex flex-1 justify-center px-4">
+          {/* CENTER (DESKTOP SEARCH ONLY) */}
+          <div className="hidden md:flex flex-1 justify-center px-4">
+            <MenuSearch />
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex items-center gap-3">
+            {/* MOBILE SEARCH ICON / INPUT */}
+            <div className="md:hidden">
               <MenuSearch />
             </div>
 
-            {/* LOGO */}
-
-            {/* LOCATION */}
-          </div>
-
-          {/* RIGHT ACTIONS */}
-          <div className="flex items-center gap-4">
             {/* CART */}
             <button
               onClick={() => (isCartOpen ? close() : open("cart"))}
@@ -94,11 +96,6 @@ export default function Nav() {
               )}
             </button>
           </div>
-        </div>
-
-        {/* MOBILE SEARCH */}
-        <div className="md:hidden px-4 pb-3">
-          <MenuSearch />
         </div>
       </nav>
 

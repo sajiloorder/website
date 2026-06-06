@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
 type MenuItem = {
   id: number;
@@ -20,6 +21,7 @@ const MENU_ITEMS: MenuItem[] = [
 export default function MenuSearch() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -35,6 +37,7 @@ export default function MenuSearch() {
         !wrapperRef.current.contains(event.target as Node)
       ) {
         setOpen(false);
+        setMobileOpen(false);
       }
     };
 
@@ -45,9 +48,14 @@ export default function MenuSearch() {
   return (
     <div
       ref={wrapperRef}
-      className="flex-1 relative w-full max-w-md rounded-md"
+      className="relative w-full max-w-md flex items-center"
     >
-      {/* SEARCH INPUT */}
+      {/* 🔍 MOBILE ICON */}
+      <button onClick={() => setMobileOpen(true)} className="md:hidden p-2">
+        <AiOutlineSearch size={20} />
+      </button>
+
+      {/* DESKTOP INPUT */}
       <input
         value={query}
         onChange={(e) => {
@@ -56,12 +64,65 @@ export default function MenuSearch() {
         }}
         onFocus={() => setOpen(true)}
         placeholder="Search menu items..."
-        className="w-full border border-border rounded px-3 py-2 outline-none text-sm"
+        className="hidden md:block w-full border border-border rounded px-3 py-2 outline-none text-sm"
       />
 
-      {/* DROPDOWN */}
-      {open && (
-        <div className="absolute left-0 right-0 mt-2 bg-white border border-border rounded shadow-lg z-50 max-h-64 overflow-y-auto">
+      {/* MOBILE EXPANDED INPUT */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/40 flex items-start justify-center pt-20"
+          onClick={() => setMobileOpen(false)}
+        >
+          {" "}
+          <div className="w-[90%] bg-white rounded-lg shadow-lg p-3">
+            {/* input */}
+            <input
+              autoFocus
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setOpen(true);
+              }}
+              placeholder="Search menu items..."
+              className="w-full border border-border rounded px-3 py-2 outline-none text-sm"
+            />
+
+            {/* results */}
+            {open && (
+              <div className="mt-2 max-h-64 overflow-y-auto">
+                {filtered.length === 0 ? (
+                  <div className="p-3 text-sm text-text-muted">
+                    No items found
+                  </div>
+                ) : (
+                  filtered.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setQuery(item.name);
+                        setMobileOpen(false);
+                        setOpen(false);
+                      }}
+                      className="w-full text-left px-3 py-2 hover:bg-gray-100 flex justify-between text-sm"
+                    >
+                      <span>{item.name}</span>
+                      {item.category && (
+                        <span className="text-xs text-text-muted">
+                          {item.category}
+                        </span>
+                      )}
+                    </button>
+                  ))
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* DESKTOP DROPDOWN */}
+      {open && !mobileOpen && (
+        <div className="absolute left-0 right-0 mt-2 bg-white border border-border rounded shadow-lg z-50 max-h-64 overflow-y-auto hidden md:block">
           {filtered.length === 0 ? (
             <div className="p-3 text-sm text-text-muted">No items found</div>
           ) : (

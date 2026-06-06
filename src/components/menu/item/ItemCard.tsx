@@ -13,8 +13,8 @@ export default function ItemCard({ item }: ItemCardProps) {
 
   return (
     <>
-      <button onClick={() => setItemDetails(item)} className="  relative cursor-pointer hover:shadow-lg transition-all duration-300  ">
-        <div key={item.name} className="bg-white rounded-md  shadow-md overflow-hidden  transition text-xs text-left">
+      <button onClick={() => setItemDetails(item)} className="  relative cursor-pointer transition-all duration-300  ">
+        <div key={item.name} className="bg-white rounded-md   overflow-hidden  transition text-xs text-left">
           {/* image url will hadle later */}
           <img src={item.image_url} alt={item.name} className="w-full h-[100px] md:h-40 object-cover" />
 
@@ -22,7 +22,7 @@ export default function ItemCard({ item }: ItemCardProps) {
             <div className="flex  justify-between items-start gap-1">
               <h3 className="font-semibold  md:text-base text-primary ">{item.name}</h3>
               {/* just button icons */}
-              <div className="cursor-pointer w-fit flex justify-center  items-center gap-2  text-black bg-transparent">
+              <div className="cursor-pointer w-fit flex justify-center  items-center gap-2  text-black ">
                 <IoAddOutline size={22} className="text-whote" />
               </div>
             </div>
