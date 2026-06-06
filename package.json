@@ -11,13 +11,13 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "framer-motion": "^12.23.6",
-    "next": "15.3.3",
+    "next": "^15.5.19",
     "nextjs-toploader": "^3.8.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
-    "swiper": "^11.2.10"
+    "swiper": "^12.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
