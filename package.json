@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "npx eslint src --ignore-pattern \".next/**\" --ignore-pattern \"build/**\" --ignore-pattern \"out/**\" --ext .ts,.tsx"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
@@ -26,8 +26,8 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^15.3.3",
     "postcss": "^8.5.5",
     "tailwindcss": "^4.1.10",
     "typescript": "^5"

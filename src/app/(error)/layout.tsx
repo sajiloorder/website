@@ -1,9 +1,7 @@
 import "@/app/globals.css";
-import Nav from "@/components/nav/Nav";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import NavContextProvider from "@/context/nav-context";
-import Footer from "@/components/footer/Footer";
+import NavContextProvider from "@/context/NavContext";
 import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
@@ -28,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         {/* top loader */}
         <NextTopLoader
           color="#2299DD"
@@ -50,7 +50,6 @@ export default function RootLayout({
           {/* button */}
 
           <main id="app">{children}</main>
-
         </NavContextProvider>
       </body>
     </html>

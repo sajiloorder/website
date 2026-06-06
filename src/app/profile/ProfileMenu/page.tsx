@@ -1,78 +1,56 @@
 "use client";
-import { useContext } from "react";
-import { NavContext } from "@/context/nav-context";
 
 import Link from "next/link";
 import Image from "next/image";
-import { div } from "framer-motion/client";
-
+import useMenu from "@/hooks/useMenu";
 
 const LINKS = [
-    {
-        id: 1,
-        name: "Location",
-        href: "/",
-    },
-    {
-        id: 2,
-        name: "Change password",
-        href: "/menu",
-    },
-    {
-        id: 3,
-        name: "Shipping",
-        href: "/about",
-    },
-    {
-        id: 4,
-        name: "Payment",
-        href: "/contact",
-    },
-    {
-        id: 5,
-        name: "offer",
-        href: "/contact",
-    },
-    {
-        id: 6,
-        name: "FAQ",
-        href: "/contact",
-    },
+  { id: 3, name: "Shipping", href: "/about" },
+  { id: 4, name: "Payment", href: "/contact" },
+  { id: 5, name: "Offers", href: "/offers" },
+  { id: 6, name: "FAQs", href: "/faqs" },
 ];
+
 export default function ProfileMenu() {
-    const { closeProfile } = useContext(NavContext);
-    return (
-        <div className="flex justify-end">
-            <section className=" absolute w-[350px] h-[430px]  bg-primary justify-end border-none text-white px-2 border  z-10">
-                <div className="flex  items-center gap-2 p-4   max-w-sm mx-auto">
-                    <Image
-                        src="/images/ronaldo.jpg" // ✅ put your image in /public/profile.jpg
-                        alt="Profile"
-                        width={64}
-                        height={64}
-                        className="rounded-full object-cover"
-                    />
-                    <div>
-                        <h2 className="text-lg font-semibold">Ronaldo</h2>
-                        <p className="text-gray-200 text-sm">Location</p>
-                    </div>
-                </div>
-                <div className=" flex mt-6 flex-col gap-4 px-2">
+  const { close } = useMenu();
 
-                    {LINKS.map((link) => (
-                        <Link key={link.id} href={link.href} onClick={closeProfile}>
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="flex justify-center">
-                        <button className="flex w-30 items-center gap-2 justify-center bg-white text-primary p-2 rounded-xl hover:bg-white transition duration-300  ">
-                            Edit Profile
-                        </button>
-                    </div>
-                </div>
-            </section>
+  return (
+    <div className=" h-calc[100vh - 64px] top-16 fixed inset-0 z-50 flex justify-end">
+      {/* overlay (click outside to close) */}
+      <div className="absolute inset-0 bg-black/30" onClick={close} />
 
+      {/* panel */}
+      <aside className="relative w-[340px] h-full bg-primary text-white shadow-xl">
+        {/* profile header */}
+        <div className="flex items-center gap-3 p-5 border-b border-white/10">
+          <Image
+            src="/images/ronaldo.jpg"
+            alt="Profile"
+            width={35}
+            height={35}
+            className="rounded-full aspect-square"
+          />
+
+          <div className="leading-tight">
+            <h2 className="text-base font-semibold">Ronaldo</h2>
+            <p className="text-xs text-white/70">Location</p>
+          </div>
         </div>
 
-    );
+        {/* links */}
+        <div className="flex flex-col gap-1 p-3">
+          {LINKS.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={close}
+              className="px-3 py-2 rounded-lg text-sm text-white/90 hover:bg-white/10 transition"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </aside>
+    </div>
+  );
 }

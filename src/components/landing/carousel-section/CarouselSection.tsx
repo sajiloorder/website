@@ -37,7 +37,7 @@ export default function AdCarousel() {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className=" relative w-full h-[100px] md:w-4/5 md:h-[225px]   mx-auto overflow-hidden rounded-xl">
-              <img src={slide.img} alt={slide.title} className=" w-full h-full object-cover" />
+              <Image src={slide.img} alt={slide.title} width={800} height={450} className=" w-full h-full object-cover" />
 
               <div className="absolute inset-0 bg-black/40 flex flex-row md:flex-col justify-center items-center text-white px-6 text-center">
                 <h2 className="text-2xl md:text-4xl font-bold">{slide.title}</h2>
