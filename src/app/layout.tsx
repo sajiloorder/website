@@ -18,7 +18,12 @@ export const metadata: Metadata = {
   title: "Sajilo Order",
   description:
     " Order your favorite food with ease using Sajilo Order. Browse our menu, customize your order, and enjoy delicious meals delivered right to your doorstep.",
+  icons: {
+    icon: "/images/logo12
+    .png",
+  },
 };
+
 
 export default function RootLayout({
   children,
