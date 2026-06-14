@@ -143,12 +143,14 @@ export default function Cart() {
             <span>Rs {totalAmount.toFixed(2)}</span>
           </div>
 
-          <Link
-            href={"/checkout"}
-            className="w-full bg-primary text-white py-3 rounded-md font-medium hover:opacity-90 transition cursor-pointer"
-          >
-            Checkout
-          </Link>
+          <div className="flex justify-center">
+            <Link
+              href="/checkout"
+              className="bg-primary text-white py-3 px-20 rounded-md font-medium hover:opacity-90 transition cursor-pointer"
+            >
+              Checkout
+            </Link>
+          </div>
         </div>
       )}
     </aside>
