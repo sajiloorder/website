@@ -5,8 +5,8 @@ import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-300 text-gray-600 py-6">
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1  rounded-2xl md:grid-cols-4 gap-6">
+    <footer className="bg-gray-50 border-t border-gray-300 text-gray-600 py-6 mt-10">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1  rounded-2xl md:grid-cols-4 gap-6 mt-2">
         {/* Brand */}
         <div>
           <h2 className="text-lg font-bold mb-2">We Are Sajilo Order</h2>
@@ -28,6 +28,11 @@ export default function Footer() {
               Menu
             </Link>
           </ul>
+          <ul>
+            <Link href="/menu" className="text-sm text-black hover:text-primary">
+              Offers
+            </Link>
+          </ul>
         </div>
 
         {/* Navigation */}
@@ -41,7 +46,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/offers" className="hover:text-primary">
-                Offers
+                Services
               </Link>
             </li>
             <li>
@@ -76,8 +81,8 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold mb-2">Stay Updated</h3>
           <form className="flex  flex-col space-y-2">
-            <input type="email" placeholder="Enter your email" className="px-3 py-1 bg-white text-sm text-black outline-none rounded" />
-            <button className="bg-white text-black hover:opacity-80 text-sm py-1 w-20 rounded">Subscribe</button>
+            <input type="email" placeholder="Enter your email" className="px-3 py-1 bg-primary/90 text-sm text-white outline-none rounded placeholder:text-white" />
+            <button className="bg-primary/90 text-white hover:opacity-80 text-sm py-1 w-20 rounded">Subscribe</button>
           </form>
 
           {/* Social Icons */}
@@ -102,7 +107,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom text */}
-      <div className="mt-10 text-center text-xs text-white">&copy; {new Date().getFullYear()} ! FoodieExpress. All rights reserved.</div>
+      <div className="mt-10 text-center text-xs text-black">&copy; {new Date().getFullYear()} ! Sajilo Order. All rights reserved.</div>
     </footer>
   );
 }
