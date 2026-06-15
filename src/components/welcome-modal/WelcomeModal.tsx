@@ -34,7 +34,7 @@ export default function WelcomeModal({
 
         {/* Content */}
         <div className="relative z-10 flex min-h-[540px] flex-col items-center justify-center px-8 text-center">
-          <span className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-orange-300">
+          <span className="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-primary">
             Coming Soon
           </span>
 
@@ -44,12 +44,12 @@ export default function WelcomeModal({
               SAJILO
             </span>
 
-            <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-6xl font-black tracking-tight text-transparent drop-shadow-xl">
+            <span className="block bg-gradient-to-r from-primary via-orange-500 to-orange-600 bg-clip-text text-6xl font-black tracking-tight text-transparent drop-shadow-xl">
               ORDER
             </span>
           </h1>
 
-          <div className="my-5 h-1 w-20 rounded-full bg-orange-500" />
+          <div className="my-5 h-1 w-20 rounded-full bg-primary" />
 
           <p className="mb-8 text-base font-medium text-gray-200">
             Taste Delivered.

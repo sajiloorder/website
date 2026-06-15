@@ -150,9 +150,9 @@ export const dummy_menu_categories = [
 export const dummy_menu_items = [
   {
     id: 1,
-    name: "Steamed Chicken Momo",
+    name: "Crunchy Chicken burger",
     description:
-      "Tasty steamed chicken momo prepared fresh with local ingredients.",
+      "Crispy fried chicken burger with fresh veggies and creamy sauce, designed for good taste.",
     category: 1,
     price: 701.75,
     image_url: "/images/burger123.jpg",
@@ -163,8 +163,8 @@ export const dummy_menu_items = [
   },
   {
     id: 2,
-    name: "Fried Veg Momo",
-    description: "Tasty fried veg momo prepared fresh with local ingredients.",
+    name: "White Sauce Pasta",
+    description: "Flavored with garlic, cheese, pepper, and herbs, giving it a mild and comforting taste.",
     category: "momo",
     price: 781.39,
     image_url: "/images/pasta.jpg",
@@ -175,8 +175,8 @@ export const dummy_menu_items = [
   },
   {
     id: 3,
-    name: "Buff Jhol Momo",
-    description: "Tasty buff jhol momo prepared fresh with local ingredients.",
+    name: "crunchy Chiken Nuggets",
+    description: "Deep-fried until crispy and golden on the outside, while remaining juicy inside.",
     category: 1,
     price: 743.9,
     image_url: "/images/kfc.jpg",
@@ -187,9 +187,9 @@ export const dummy_menu_items = [
   },
   {
     id: 4,
-    name: "Chicken Chowmein",
+    name: "Chicken Biryani",
     description:
-      "Nepali-style stir-fried noodles with chicken and seasonal vegetables.",
+      "Flavorful rice dish, marinated chicken, and cumin, cardamom, cloves, and saffron.",
     category: 2,
     price: 820.5,
     image_url: "/images/buryani1.jpg",
@@ -200,8 +200,8 @@ export const dummy_menu_items = [
   },
   {
     id: 5,
-    name: "Buff Chowmein",
-    description: "Classic buff chowmein with tangy sauces and crunchy veggies.",
+    name: "Chicken Chowmein",
+    description: "Soft noodles, chicken pieces, and mixed vegetables tossed in soy sauce, garlic, and spices.",
     category: 2,
     price: 795.2,
     image_url: "/images/chowmein.png",
@@ -212,8 +212,8 @@ export const dummy_menu_items = [
   },
   {
     id: 6,
-    name: "Veg Noodles",
-    description: "Simple and satisfying vegetable noodles made with love.",
+    name: "French Fries",
+    description: "French Fries are crispy, golden potato sticks that are deep-fried and lightly salted.",
     category: 6,
     price: 705.9,
     image_url: "/images/fries.jpg",
@@ -224,9 +224,9 @@ export const dummy_menu_items = [
   },
   {
     id: 7,
-    name: "Chicken Burger",
+    name: "Chicken Chilly Momo",
     description:
-      "Crispy fried chicken patty with lettuce and mayo in a toasted bun.",
+      "Chicken Chilly Momo is spicy chicken dumplings tossed in a tangy, garlic-soy sauce.",
     category: 7,
     price: 699.5,
     image_url: "/images/chilly momo.jpg",
@@ -237,8 +237,8 @@ export const dummy_menu_items = [
   },
   {
     id: 8,
-    name: "Veg Sandwich",
-    description: "Layered sandwich stuffed with fresh veggies and cheese.",
+    name: "White Sauce Pasta",
+    description: "White Sauce Pasta is creamy pasta made with milk, butter, and cheese sauce.",
     category: "momo",
     price: 599.9,
     image_url: "/images/pasta.jpg",
@@ -249,8 +249,8 @@ export const dummy_menu_items = [
   },
   {
     id: 9,
-    name: "Chicken Pizza",
-    description: "Medium-sized pizza topped with chicken, onion, and capsicum.",
+    name: "Combo Pizza",
+    description: "Pizza Combo is a set meal with pizza, sides, and a drink.",
     category: 2,
     price: 1185.0,
     image_url: "/images/pizza123.jpg",
@@ -261,9 +261,9 @@ export const dummy_menu_items = [
   },
   {
     id: 10,
-    name: "Veg Pizza",
+    name: "Cheese Burger",
     description:
-      "Veggie delight pizza with cheese, tomato, olives, and jalapeños.",
+      "Cheese Burger is a burger with a meat patty, cheese, and sauce in a bun.",
     category: 10,
     price: 1080.0,
     image_url: "/images/burger.jpg",
@@ -274,8 +274,8 @@ export const dummy_menu_items = [
   },
   {
     id: 11,
-    name: "Paneer Butter Masala",
-    description: "Creamy paneer curry served with naan or rice.",
+    name: "Chicken Sekuwa",
+    description: "Chicken Sekwa is spicy grilled chicken with smoky flavor.",
     category: 5,
     price: 950.0,
     image_url: "/images/sekwa.jpg",
@@ -285,7 +285,7 @@ export const dummy_menu_items = [
   },
   {
     id: 12,
-    name: "Chicken Biryani",
+    name: "Mix Combo Offer",
     description: "Fragrant rice layered with chicken and Indian spices.",
     category: 5,
     price: 1100.0,
@@ -297,9 +297,9 @@ export const dummy_menu_items = [
   },
   {
     id: 13,
-    name: "Mixed Thali Set",
+    name: "Black Label",
     description:
-      "Complete Nepali-Indian thali with rice, dal, curry, pickle, and curd.",
+      "Black Label is a smooth, smoky Scotch whisky with a rich and balanced flavor.",
     category: 5,
     price: 980.0,
     image_url: "/images/doubleblack.jpg",
@@ -310,8 +310,8 @@ export const dummy_menu_items = [
   },
   {
     id: 14,
-    name: "Choco Donut",
-    description: "Soft and chocolatey donut glazed with dark chocolate.",
+    name: "Chilled Beer",
+    description: "Happiness with friends add with chilled beer.",
     category: 6,
     price: 230.0,
     image_url: "/images/beer.jpg",
@@ -322,7 +322,7 @@ export const dummy_menu_items = [
   },
   {
     id: 15,
-    name: "Veg Puff",
+    name: "Mix Combo Offer",
     description: "Crispy puff stuffed with spiced vegetables.",
     category: 6,
     price: 120.0,
@@ -334,8 +334,8 @@ export const dummy_menu_items = [
   },
   {
     id: 16,
-    name: "Iced Lemon Tea",
-    description: "Chilled tea with lemon and mint, perfect for summer.",
+    name: "Hard Drinks",
+    description: "Blue label",
     category: 7,
     price: 330.0,
     image_url: "/images/bluelabel.jpg",
@@ -346,11 +346,11 @@ export const dummy_menu_items = [
   },
   {
     id: 17,
-    name: "Milk Tea (Cold)",
-    description: "Sweet cold milk tea with tapioca pearls.",
+    name: "Veg Sandwich",
+    description: "Veg sandwich very tasty and healthy.",
     category: 7,
     price: 360.0,
-    image_url: "/images/chicken katti.jpg",
+    image_url: "/images/sandwich1.webp",
     is_available: true,
     is_popular: true,
     created_at: "2025-07-21T09:26:35.527665Z",
@@ -358,8 +358,8 @@ export const dummy_menu_items = [
   },
   {
     id: 18,
-    name: "Kingfisher Beer",
-    description: "Premium lager beer served chilled.",
+    name: "Chicken Roll",
+    description: "Egg, chicken and flavoured",
     category: 7,
     price: 470.0,
     image_url: "/images/chicken katti.jpg",
