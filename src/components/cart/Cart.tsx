@@ -85,35 +85,34 @@ export default function Cart() {
                 className="border border-border bg-white rounded-lg p-4"
               >
                 <div className="flex gap-3 items-start">
+                  {/* IMAGE */}
+                  <div className="h-14 w-14 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                    <img
+                      src={item.image_url}
+                      alt={item.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
 
-  {/* IMAGE */}
-  <div className="h-14 w-14 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
-    <img
-      src={item.image_url}
-      alt={item.name}
-      className="h-full w-full object-cover"
-    />
-  </div>
+                  {/* NAME */}
+                  <div className="flex-1">
+                    <h3 className="font-medium">{item.name}</h3>
+                  </div>
 
-  {/* NAME */}
-  <div className="flex-1">
-    <h3 className="font-medium">{item.name}</h3>
-  </div>
+                  {/* PRICE */}
+                  <div className="text-right">
+                    <p className="font-medium">
+                      Rs {(item.price * item.quantity).toFixed(2)}
+                    </p>
 
-  {/* PRICE */}
-  <div className="text-right">
-    <p className="font-medium">
-      Rs {(item.price * item.quantity).toFixed(2)}
-    </p>
-
-    <button
-      onClick={() => handleRemoveItem(item.id)}
-      className="text-xs text-red-500 underline"
-    >
-      Remove
-    </button>
-  </div>
-</div>
+                    <button
+                      onClick={() => handleRemoveItem(item.id)}
+                      className="text-xs text-red-500 underline"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
 
                 {/* QUANTITY */}
                 <div className="flex  items-center gap-3 mt-4">
