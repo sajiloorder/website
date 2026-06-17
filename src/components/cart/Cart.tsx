@@ -50,20 +50,20 @@ export default function Cart() {
   };
 
   return (
-    <aside className="fixed right-0 top-16 z-50 h-[calc(100vh-64px)] w-120 max-w-md bg-white border-l border-border shadow-xl flex flex-col">
+    <aside className="fixed right-0 top-16 z-50 h-[calc(100vh-64px)] w-120 max-w-md bg-white border-1 border-border shadow-xl flex flex-col">
       {/* HEADER */}
       <div className="flex items-center justify-between p-4 border-b border-border">
         <div>
           <h2 className="font-semibold text-lg">Your Cart</h2>
-          <p className="text-sm text-text-muted">
-            {totalQuantity} item{totalQuantity !== 1 ? "s" : ""}
-          </p>
+          <p className="text-sm text-text-muted ">
+            {totalQuantity} Item{totalQuantity !== 1 ? "s" : ""}
+          </p> 
         </div>
 
         {items.length > 0 && (
           <button
             onClick={handleClearCart}
-            className="text-sm text-danger underline cursor-pointer"
+            className="text-sm text-danger mb-4 mr-4 underline cursor-pointer"
           >
             Clear
           </button>
@@ -146,7 +146,8 @@ export default function Cart() {
           <div className="flex justify-center">
             <Link
               href="/checkout"
-              className="bg-primary text-white py-3 px-20 rounded-md font-medium hover:opacity-90 transition cursor-pointer"
+              className="bg-primary/90 text-white py-2 px-45 text-center rounded-md font-medium hover:bg-primary transition cursor-pointer w-full
+              "
             >
               Checkout
             </Link>
