@@ -50,7 +50,7 @@ export default function Nav() {
       <nav className="fixed top-0 left-0 w-full z-50 bg-background border-b border-white/10">
         <div className="flex items-center justify-between px-4 py-3">
           {/* LEFT */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {/* MENU */}
             <button onClick={() => open("menu")}>
               {isMenuOpen ? (
@@ -75,6 +75,7 @@ export default function Nav() {
 
           {/* RIGHT */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             {/* MOBILE SEARCH ICON / INPUT */}
             <div className="md:hidden">
               <MenuSearch />
@@ -82,7 +83,7 @@ export default function Nav() {
 
 
             {/* CART */}
-            <ThemeToggle />
+            
             <button
               onClick={() => (isCartOpen ? close() : open("cart"))}
               className="relative"
