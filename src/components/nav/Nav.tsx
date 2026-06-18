@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+
 import { useSelector } from "react-redux";
 
 import Logo from "../ui/logo/Logo";
@@ -23,6 +24,7 @@ import useMenu from "@/hooks/useMenu";
 import SetLocationButton from "../set-location/SetLocationButton";
 import MenuSearch from "../menu/item/MenuSearch";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   const { active, open, close } = useMenu();
@@ -45,7 +47,7 @@ export default function Nav() {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-background border-b border-border">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-background border-b border-white/10">
         <div className="flex items-center justify-between px-4 py-3">
           {/* LEFT */}
           <div className="flex items-center gap-3">
@@ -62,6 +64,7 @@ export default function Nav() {
             <Link href="/" onClick={close}>
               <Logo />
             </Link>
+            
             <SetLocationButton />
           </div>
 
@@ -77,7 +80,9 @@ export default function Nav() {
               <MenuSearch />
             </div>
 
+
             {/* CART */}
+            <ThemeToggle />
             <button
               onClick={() => (isCartOpen ? close() : open("cart"))}
               className="relative"
@@ -103,6 +108,7 @@ export default function Nav() {
                 <AiOutlineUser size={18} />
               )}
             </button>
+            
           </div>
         </div>
       </nav>

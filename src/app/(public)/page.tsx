@@ -20,7 +20,7 @@ export default function LandingPage() {
     // Hide popup after 3 seconds
     const timer = setTimeout(() => {
       setShowModal(false);
-    }, 10000);
+    }, 3000);
 
     // Cleanup timer when component unmounts
     return () => clearTimeout(timer);

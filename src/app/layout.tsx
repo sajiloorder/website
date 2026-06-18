@@ -1,5 +1,6 @@
 import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
+import ThemeProvider from "@/providers/ThemeProvider";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -23,20 +24,21 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+   <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClientProviders>
-          <main id="home">{children}</main>
-        </ClientProviders>
+        <ThemeProvider>
+          <ClientProviders>
+            <main id="home">{children}</main>
+          </ClientProviders>
+        </ThemeProvider>
       </body>
     </html>
   );

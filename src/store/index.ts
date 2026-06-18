@@ -1,18 +1,21 @@
-"use client";
 import { configureStore } from "@reduxjs/toolkit";
-
-import cartSlice from "./cartSlice";
+import cartReducer from "./cartSlice";
 
 const store = configureStore({
   reducer: {
-    cart: cartSlice,
+    cart: cartReducer,
   },
 });
-store.subscribe(() => {
-  if (typeof window !== "undefined") {
+
+// Save to localStorage (client only)
+if (typeof window !== "undefined") {
+  store.subscribe(() => {
     const state = store.getState();
     localStorage.setItem("cart", JSON.stringify(state.cart));
-  }
-});
+  });
+}
 
 export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
