@@ -77,7 +77,8 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <ThemeToggle />
             {/* MOBILE SEARCH ICON / INPUT */}
-            <div className="md:hidden">
+            <div className="md:hidden
+            ">
               <MenuSearch />
             </div>
 
