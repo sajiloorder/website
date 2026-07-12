@@ -56,6 +56,7 @@ export default function HomeLayout({
             >
               {children}
             </main>
+            
             <div id="modal-root"></div>
             <Footer />
           </NavContextProvider>

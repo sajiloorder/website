@@ -1,6 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
 :root {
   /* Brand */
   --primary: #ff3131;
@@ -28,8 +38,8 @@
   --info: #3b82f6;
 
   /* Borders */
-  --border: #e5e7eb;
-  --border-hover: #d1d5db;
+  /* --border: #e5e7eb;
+  --border-hover: #d1d5db; */
 
   /* Overlay */
   --overlay: rgba(0, 0, 0, 0.5);
@@ -139,6 +149,7 @@
 
 html {
   scroll-behavior: smooth;
+   color-scheme: light dark;
 }
 
 body {
@@ -204,4 +215,18 @@ keyframes slideInRight {
 
 .slide-out-right {
   animation: slideOutRight 0.25s ease-in forwards;
+}
+/* for dark theme */
+
+.dark {
+  --background: #0a0a0a;
+  --background-secondary: #171717;
+  --background-tertiary: #262626;
+
+  --foreground: #fafafa;
+  --foreground-secondary: #a3a3a3;
+  --foreground-muted: #737373;
+
+  --border: #262626;
+  --border-hover: #404040;
 }

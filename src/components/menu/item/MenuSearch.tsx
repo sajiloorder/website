@@ -73,25 +73,36 @@ export default function MenuSearch() {
           className="fixed inset-0 z-[100] bg-black/40 flex items-start justify-center pt-20"
           onClick={() => setMobileOpen(false)}
         >
-          {" "}
-          <div className="w-[90%] bg-white rounded-lg shadow-lg p-3">
-            {/* input */}
-            <input
-              autoFocus
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-                setOpen(true);
-              }}
-              placeholder="Search menu items..."
-              className="w-full border border-border rounded px-3 py-2 outline-none text-sm"
-            />
+          <div
+            className="w-[90%] max-w-md bg-white dark:bg-gray-900
+      rounded-sm shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Search input */}
+            <div className="flex items-center gap-2 px-4 py-2 border-b border-gray-100 dark:border-gray-800">
+              {/* <span className="text-gray-400">🔍</span> */}
 
-            {/* results */}
+              <input
+                autoFocus
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setOpen(true);
+                }}
+                placeholder="Search menu items..."
+                className="
+            w-full bg-transparent outline-none text-sm
+            text-gray-800 dark:text-gray-100
+            placeholder:text-gray-400
+          "
+              />
+            </div>
+
+            {/* Results */}
             {open && (
-              <div className="mt-2 max-h-64 overflow-y-auto">
+              <div className="max-h-72 overflow-y-auto">
                 {filtered.length === 0 ? (
-                  <div className="p-3 text-sm text-text-muted">
+                  <div className="p-4 text-sm text-gray-500">
                     No items found
                   </div>
                 ) : (
@@ -103,11 +114,22 @@ export default function MenuSearch() {
                         setMobileOpen(false);
                         setOpen(false);
                       }}
-                      className="w-full text-left px-3 py-2 hover:bg-gray-100 flex justify-between text-sm"
+                      className="
+                  w-full text-left px-4 py-3
+                  flex items-center justify-between
+                  hover:bg-gray-50 dark:hover:bg-gray-800
+                  transition-colors
+                "
                     >
-                      <span>{item.name}</span>
+                      <span className="text-sm text-gray-800 dark:text-gray-100">
+                        {item.name}
+                      </span>
+
                       {item.category && (
-                        <span className="text-xs text-text-muted">
+                        <span
+                          className="text-[11px] px-2 py-0.5 rounded-full
+                  bg-gray-100 dark:bg-gray-800 text-gray-500"
+                        >
                           {item.category}
                         </span>
                       )}
