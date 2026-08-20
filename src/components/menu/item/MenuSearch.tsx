@@ -89,28 +89,30 @@ export default function MenuSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
 
-  /*
-   * Load recent searches
-   */
+  /* ---------------------------------------------
+     LOAD RECENT SEARCHES
+  --------------------------------------------- */
+
   useEffect(() => {
     try {
       const saved = localStorage.getItem("recent-menu-searches");
 
-      if (saved) {
-        const parsed = JSON.parse(saved);
+      if (!saved) return;
 
-        if (Array.isArray(parsed)) {
-          setRecentSearches(parsed);
-        }
+      const parsed = JSON.parse(saved);
+
+      if (Array.isArray(parsed)) {
+        setRecentSearches(parsed);
       }
     } catch {
       // Ignore invalid localStorage data
     }
   }, []);
 
-  /*
-   * Save recent search
-   */
+  /* ---------------------------------------------
+     SAVE RECENT SEARCH
+  --------------------------------------------- */
+
   const saveRecentSearch = (value: string) => {
     const search = value.trim();
 
@@ -135,9 +137,10 @@ export default function MenuSearch() {
     }
   };
 
-  /*
-   * Search results
-   */
+  /* ---------------------------------------------
+     FILTER RESULTS
+  --------------------------------------------- */
+
   const filteredItems = MENU_ITEMS.filter((item) => {
     const value = query.trim().toLowerCase();
 
@@ -149,33 +152,37 @@ export default function MenuSearch() {
     );
   });
 
-  /*
-   * Open desktop search
-   */
+  /* ---------------------------------------------
+     OPEN SEARCH
+  --------------------------------------------- */
+
   const handleFocus = () => {
     setIsOpen(true);
   };
 
-  /*
-   * Close everything
-   */
+  /* ---------------------------------------------
+     CLOSE SEARCH
+  --------------------------------------------- */
+
   const closeSearch = () => {
     setIsOpen(false);
     setMobileOpen(false);
   };
 
-  /*
-   * Select a result
-   */
+  /* ---------------------------------------------
+     SELECT SEARCH
+  --------------------------------------------- */
+
   const selectSearch = (value: string) => {
     setQuery(value);
     saveRecentSearch(value);
     closeSearch();
   };
 
-  /*
-   * Open mobile search
-   */
+  /* ---------------------------------------------
+     MOBILE SEARCH
+  --------------------------------------------- */
+
   const openMobileSearch = () => {
     setMobileOpen(true);
     setIsOpen(true);
@@ -185,9 +192,10 @@ export default function MenuSearch() {
     }, 50);
   };
 
-  /*
-   * Outside click
-   */
+  /* ---------------------------------------------
+     OUTSIDE CLICK
+  --------------------------------------------- */
+
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
@@ -205,9 +213,10 @@ export default function MenuSearch() {
     };
   }, []);
 
-  /*
-   * Escape key
-   */
+  /* ---------------------------------------------
+     ESCAPE KEY
+  --------------------------------------------- */
+
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -234,31 +243,59 @@ export default function MenuSearch() {
       <div className="hidden md:block">
         <div
           className={`
-            group flex h-10 w-full items-center
+            group
+            flex
+            h-10
+            w-full
+            items-center
             rounded-sm
             border
             px-3.5
-            transition-all duration-200
+            transition-all
+            duration-200
+
             ${
               isOpen
-                ? "border-gray-300 bg-white shadow-[0_8px_25px_rgba(0,0,0,0.07)]"
-                : "border-gray-200 bg-gray-50 hover:border-gray-300 hover:bg-white"
+                ? `
+                  border-gray-300
+                  bg-white
+                  shadow-[0_8px_25px_rgba(0,0,0,0.07)]
+                  dark:border-white/10
+                  dark:bg-[#151515]
+                  dark:shadow-none
+                `
+                : `
+                  border-gray-200
+                  bg-gray-50
+                  hover:border-gray-300
+                  hover:bg-white
+                  dark:border-white/10
+                  dark:bg-[#151515]
+                  dark:hover:border-white/15
+                  dark:hover:bg-[#181818]
+                `
             }
           `}
         >
+          {/* Search icon */}
+
           <Search
             size={17}
             strokeWidth={1.8}
             className={`
-              mr-2.5 shrink-0
+              mr-2.5
+              shrink-0
               transition-colors
+
               ${
                 isOpen
-                  ? "text-gray-700"
-                  : "text-gray-400 group-hover:text-gray-600"
+                  ? "text-gray-700 dark:text-white/80"
+                  : "text-gray-400 group-hover:text-gray-600 dark:text-white/40 dark:group-hover:text-white/70"
               }
             `}
           />
+
+          {/* Input */}
 
           <input
             ref={inputRef}
@@ -270,14 +307,20 @@ export default function MenuSearch() {
             onFocus={handleFocus}
             placeholder="Search menu..."
             className="
-              min-w-0 flex-1
+              min-w-0
+              flex-1
               bg-transparent
               text-[13px]
               text-gray-900
               outline-none
               placeholder:text-gray-400
+
+              dark:text-white
+              dark:placeholder:text-white/40
             "
           />
+
+          {/* Clear */}
 
           {query && (
             <button
@@ -288,13 +331,21 @@ export default function MenuSearch() {
               }}
               className="
                 ml-2
-                flex h-6 w-6
-                items-center justify-center
+                flex
+                h-6
+                w-6
+                items-center
+                justify-center
                 rounded-full
                 text-gray-400
                 transition
+
                 hover:bg-gray-100
                 hover:text-gray-700
+
+                dark:text-white/40
+                dark:hover:bg-white/10
+                dark:hover:text-white
               "
               aria-label="Clear search"
             >
@@ -317,15 +368,18 @@ export default function MenuSearch() {
               z-50
               overflow-hidden
               rounded-2xl
-              border border-gray-100
+              border
+              border-gray-100
               bg-white
               shadow-[0_18px_50px_rgba(0,0,0,0.10)]
             "
           >
-            {/* Empty search state */}
+            {/* Empty Search */}
+
             {!query.trim() && (
               <div className="p-4">
                 {/* Recent */}
+
                 {recentSearches.length > 0 && (
                   <div>
                     <div className="mb-3 flex items-center gap-2">
@@ -348,12 +402,15 @@ export default function MenuSearch() {
                           onClick={() => selectSearch(search)}
                           className="
                             rounded-full
-                            border border-gray-200
+                            border
+                            border-gray-200
                             bg-white
-                            px-3 py-1.5
+                            px-3
+                            py-1.5
                             text-[11px]
                             text-gray-600
                             transition
+
                             hover:border-gray-300
                             hover:bg-gray-50
                             hover:text-gray-900
@@ -367,6 +424,7 @@ export default function MenuSearch() {
                 )}
 
                 {/* Popular */}
+
                 <div
                   className={
                     recentSearches.length > 0
@@ -393,11 +451,13 @@ export default function MenuSearch() {
                         type="button"
                         onClick={() => selectSearch(search)}
                         className="
-                          flex w-full
+                          flex
+                          w-full
                           items-center
                           justify-between
                           rounded-xl
-                          px-3 py-2.5
+                          px-3
+                          py-2.5
                           text-left
                           transition
                           hover:bg-gray-50
@@ -418,7 +478,8 @@ export default function MenuSearch() {
               </div>
             )}
 
-            {/* Search results */}
+            {/* Search Results */}
+
             {query.trim() && (
               <div>
                 <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
@@ -440,8 +501,11 @@ export default function MenuSearch() {
                       <div
                         className="
                           mx-auto
-                          flex h-10 w-10
-                          items-center justify-center
+                          flex
+                          h-10
+                          w-10
+                          items-center
+                          justify-center
                           rounded-full
                           bg-gray-50
                         "
@@ -470,7 +534,9 @@ export default function MenuSearch() {
                         }
                         className="
                           group
-                          flex items-center gap-3
+                          flex
+                          items-center
+                          gap-3
                           rounded-xl
                           p-2
                           transition
@@ -478,10 +544,12 @@ export default function MenuSearch() {
                         "
                       >
                         {/* Image */}
+
                         <div
                           className="
                             relative
-                            h-11 w-11
+                            h-11
+                            w-11
                             shrink-0
                             overflow-hidden
                             rounded-lg
@@ -503,6 +571,7 @@ export default function MenuSearch() {
                         </div>
 
                         {/* Info */}
+
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-xs font-semibold text-gray-900">
                             {item.name}
@@ -514,6 +583,7 @@ export default function MenuSearch() {
                         </div>
 
                         {/* Price */}
+
                         <div className="flex items-center gap-2">
                           <span className="text-xs font-semibold text-gray-900">
                             ${item.price.toFixed(2)}
@@ -538,10 +608,14 @@ export default function MenuSearch() {
                   <div className="border-t border-gray-100 px-4 py-2.5">
                     <button
                       type="button"
-                      onClick={() => saveRecentSearch(query)}
+                      onClick={() =>
+                        saveRecentSearch(query)
+                      }
                       className="
-                        flex w-full
-                        items-center justify-between
+                        flex
+                        w-full
+                        items-center
+                        justify-between
                         text-[11px]
                         font-medium
                         text-gray-500
@@ -549,9 +623,7 @@ export default function MenuSearch() {
                         hover:text-gray-900
                       "
                     >
-                      <span>
-                        View all results
-                      </span>
+                      <span>View all results</span>
 
                       <ArrowRight size={13} />
                     </button>
@@ -572,14 +644,25 @@ export default function MenuSearch() {
         onClick={openMobileSearch}
         aria-label="Open search"
         className="
-          flex h-9 w-9
-          items-center justify-center
+          flex
+          h-9
+          w-9
+          items-center
+          justify-center
           rounded-full
-          border border-gray-200
+          border
+          border-gray-200
           bg-white
           text-gray-700
           transition
+
           hover:bg-gray-50
+
+          dark:border-white/10
+          dark:bg-[#151515]
+          dark:text-white
+          dark:hover:bg-[#181818]
+
           md:hidden
         "
       >
@@ -596,7 +679,8 @@ export default function MenuSearch() {
       {mobileOpen && (
         <div
           className="
-            fixed inset-0
+            fixed
+            inset-0
             z-[200]
             bg-black/40
             backdrop-blur-[2px]
@@ -606,7 +690,9 @@ export default function MenuSearch() {
         >
           <div
             className="
-              absolute inset-x-0 top-0
+              absolute
+              inset-x-0
+              top-0
               overflow-hidden
               rounded-b-3xl
               bg-white
@@ -617,14 +703,18 @@ export default function MenuSearch() {
             }
           >
             {/* Header */}
+
             <div className="flex items-center gap-3 border-b border-gray-100 p-4">
               <button
                 type="button"
                 onClick={closeSearch}
                 className="
-                  flex h-9 w-9
+                  flex
+                  h-9
+                  w-9
                   shrink-0
-                  items-center justify-center
+                  items-center
+                  justify-center
                   rounded-full
                   bg-gray-100
                   text-gray-600
@@ -636,18 +726,28 @@ export default function MenuSearch() {
                 <X size={17} />
               </button>
 
+              {/* Mobile Search Field */}
+
               <div
                 className="
-                  flex h-10 flex-1
+                  flex
+                  h-10
+                  flex-1
                   items-center
                   rounded-full
                   bg-gray-100
                   px-3.5
+
+                  dark:bg-[#151515]
                 "
               >
                 <Search
                   size={17}
-                  className="mr-2.5 text-gray-400"
+                  className="
+                    mr-2.5
+                    text-gray-400
+                    dark:text-white/40
+                  "
                 />
 
                 <input
@@ -659,12 +759,16 @@ export default function MenuSearch() {
                   }}
                   placeholder="Search menu..."
                   className="
-                    min-w-0 flex-1
+                    min-w-0
+                    flex-1
                     bg-transparent
                     text-sm
                     text-gray-900
                     outline-none
                     placeholder:text-gray-400
+
+                    dark:text-white
+                    dark:placeholder:text-white/40
                   "
                 />
 
@@ -675,7 +779,10 @@ export default function MenuSearch() {
                       setQuery("");
                       mobileInputRef.current?.focus();
                     }}
-                    className="text-gray-400"
+                    className="
+                      text-gray-400
+                      dark:text-white/40
+                    "
                     aria-label="Clear search"
                   >
                     <X size={15} />
@@ -685,10 +792,12 @@ export default function MenuSearch() {
             </div>
 
             {/* Content */}
+
             <div className="max-h-[80vh] overflow-y-auto">
               {!query.trim() ? (
                 <div className="p-5">
                   {/* Recent */}
+
                   {recentSearches.length > 0 && (
                     <section>
                       <div className="mb-3 flex items-center gap-2">
@@ -712,8 +821,10 @@ export default function MenuSearch() {
                             }
                             className="
                               rounded-full
-                              border border-gray-200
-                              px-3 py-2
+                              border
+                              border-gray-200
+                              px-3
+                              py-2
                               text-xs
                               text-gray-600
                             "
@@ -726,6 +837,7 @@ export default function MenuSearch() {
                   )}
 
                   {/* Popular */}
+
                   <section
                     className={
                       recentSearches.length > 0
@@ -753,10 +865,13 @@ export default function MenuSearch() {
                             selectSearch(search)
                           }
                           className="
-                            flex w-full
-                            items-center justify-between
+                            flex
+                            w-full
+                            items-center
+                            justify-between
                             rounded-xl
-                            px-3 py-3
+                            px-3
+                            py-3
                             text-left
                             transition
                             hover:bg-gray-50
@@ -781,9 +896,14 @@ export default function MenuSearch() {
                     <div className="px-5 py-12 text-center">
                       <div
                         className="
-                          mx-auto flex h-12 w-12
-                          items-center justify-center
-                          rounded-full bg-gray-50
+                          mx-auto
+                          flex
+                          h-12
+                          w-12
+                          items-center
+                          justify-center
+                          rounded-full
+                          bg-gray-50
                         "
                       >
                         <Search
@@ -809,7 +929,9 @@ export default function MenuSearch() {
                           saveRecentSearch(item.name)
                         }
                         className="
-                          flex items-center gap-3
+                          flex
+                          items-center
+                          gap-3
                           rounded-2xl
                           p-3
                           transition
@@ -819,7 +941,8 @@ export default function MenuSearch() {
                         <div
                           className="
                             relative
-                            h-14 w-14
+                            h-14
+                            w-14
                             shrink-0
                             overflow-hidden
                             rounded-xl
