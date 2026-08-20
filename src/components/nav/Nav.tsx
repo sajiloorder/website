@@ -47,8 +47,21 @@ export default function Nav() {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-background border-b border-white/10">
-        <div className="flex items-center justify-between px-4 py-3">
+     <nav
+  className="
+    fixed
+    inset-x-0
+    top-0
+    z-50
+    h-[60px]
+    border-b
+    border-[#e7e4dc]
+    
+    dark:border-[#292929]
+    dark:bg-[#111111]
+  "
+>
+  <div className="flex h-full items-center justify-between px-4">
           {/* LEFT */}
           <div className="flex items-center gap-4">
             {/* MENU */}
@@ -87,7 +100,7 @@ export default function Nav() {
             
             <button
               onClick={() => (isCartOpen ? close() : open("cart"))}
-              className="relative"
+              className="relative cursor-pointer"
             >
               {totalQuantity > 0 && (
                 <span className="absolute -top-2 -right-2 text-xs bg-primary text-white rounded-full px-1">

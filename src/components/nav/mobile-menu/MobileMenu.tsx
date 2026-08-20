@@ -13,131 +13,391 @@ import {
   X,
   Sun,
   Moon,
+  ChevronRight,
 } from "lucide-react";
 import useMenu from "@/hooks/useMenu";
 
 const LINKS = [
-  { id: 1, name: "Home", href: "/", icon: Home },
-  { id: 2, name: "Profile", href: "/profile", icon: User },
-  { id: 3, name: "History", href: "/history", icon: History },
-  { id: 4, name: "Author", href: "/author", icon: PenSquare },
-  { id: 5, name: "Notifications", href: "/notifications", icon: Bell },
-  { id: 6, name: "Help", href: "/help", icon: CircleHelp },
-  { id: 7, name: "Settings", href: "/settings", icon: Settings },
+  {
+    id: 1,
+    name: "Home",
+    href: "/",
+    icon: Home,
+  },
+  {
+    id: 2,
+    name: "Profile",
+    href: "/profile",
+    icon: User,
+  },
+  {
+    id: 3,
+    name: "Order History",
+    href: "/history",
+    icon: History,
+  },
+  {
+    id: 4,
+    name: "Author",
+    href: "/author",
+    icon: PenSquare,
+  },
+  {
+    id: 5,
+    name: "Notifications",
+    href: "/notifications",
+    icon: Bell,
+  },
+  {
+    id: 6,
+    name: "Help Center",
+    href: "/help",
+    icon: CircleHelp,
+  },
+  {
+    id: 7,
+    name: "Settings",
+    href: "/settings",
+    icon: Settings,
+  },
 ];
 
 export default function MobileMenu() {
   const { active, close } = useMenu();
+
   const isOpen = active === "menu";
 
   return (
     <>
-      {/* Overlay */}
-      {isOpen && (
-        <div
-          onClick={close}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-        />
-      )}
+      {/* =====================================================
+          OVERLAY
+      ===================================================== */}
 
-      {/* Drawer */}
+      <div
+        onClick={close}
+        className={`
+          fixed inset-0 z-40
+          bg-black/35
+          backdrop-blur-[3px]
+          transition-opacity duration-300
+          ${
+            isOpen
+              ? "pointer-events-auto opacity-100"
+              : "pointer-events-none opacity-0"
+          }
+        `}
+      />
+
+      {/* =====================================================
+          RIGHT DRAWER
+      ===================================================== */}
+
       <aside
         className={`
-          fixed top-0 left-0 h-screen w-[320px]
-          bg-[#111111]
-          text-white
-          z-50
-          shadow-2xl
-          transition-transform duration-300 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          fixed left-0 top-0 z-50
+          flex h-[100dvh]
+          w-[300px]
+          flex-col
+          overflow-hidden
+          border-l border-gray-200
+          bg-white
+          text-gray-900
+          shadow-[-10px_0_40px_rgba(0,0,0,0.08)]
+          transition-transform
+          duration-300
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+          ${
+            isOpen
+              ? "translate-x-0"
+              : "translate-x-full"
+          }
         `}
       >
-        {/* Close Button */}
-        <button
-          onClick={close}
-          className="absolute top-6 right-5 text-gray-400 hover:text-white"
-        >
-          <X size={24} />
-        </button>
+        {/* ===================================================
+            HEADER
+        =================================================== */}
 
-        {/* Profile Section */}
-        <div className="px-6 pt-8 pb-6 border-b border-white/10">
-          <div className="flex items-center gap-4">
-            <img
-              src="/images/logo.png"
-              alt="Profile"
-              className="w-14 h-14 rounded-full object-cover"
-            />
+        <div className="flex items-center justify-between px-5 py-5">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400">
+              Sajilo Order
+            </p>
 
-            <div>
-              <h2 className="text-2xl font-semibold">Hello,</h2>
-              <p className="text-gray-400 text-sm">
-                Sajilo Order User
-              </p>
-            </div>
+            <h2 className="mt-1 text-lg font-semibold tracking-tight text-gray-900">
+              Menu
+            </h2>
           </div>
 
-          {/* Theme Switch */}
-          <div className="mt-6">
-            <p className="text-sm text-gray-400 mb-3">Theme</p>
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Close menu"
+            className="
+              flex h-9 w-9
+              items-center justify-center
+              rounded-full
+              border border-gray-200
+              bg-gray-50
+              text-gray-500
+              transition-all
+              hover:bg-gray-100
+              hover:text-gray-900
+              active:scale-95
+            "
+          >
+            <X size={17} strokeWidth={1.8} />
+          </button>
+        </div>
 
-            <div className="flex w-fit rounded-lg bg-[#1b1b1b] p-1">
-              <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-black">
-                <Sun size={16} />
-                <span className="text-sm">Light</span>
-              </button>
+        {/* ===================================================
+            PROFILE
+        =================================================== */}
 
-              <button className="flex items-center gap-2 px-4 py-2 rounded-md text-gray-400">
-                <Moon size={16} />
-                <span className="text-sm">Dark</span>
-              </button>
+        <div className="px-4">
+          <div
+            className="
+              relative
+              overflow-hidden
+              rounded-2xl
+              border border-gray-200
+              bg-gray-50
+              p-4
+            "
+          >
+            <div
+              className="
+                absolute -right-8 -top-8
+                h-24 w-24
+                rounded-full
+                bg-gray-200/60
+              "
+            />
+
+            <div className="relative flex items-center gap-3">
+              <div
+                className="
+                  relative
+                  h-12 w-12
+                  shrink-0
+                  overflow-hidden
+                  rounded-full
+                  border-2 border-white
+                  bg-gray-200
+                  shadow-sm
+                "
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="Sajilo Order"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-[11px] font-medium text-gray-400">
+                  Welcome back
+                </p>
+
+                <h3 className="mt-0.5 truncate text-sm font-semibold text-gray-900">
+                  Sajilo Order User
+                </h3>
+              </div>
             </div>
+
+            <Link
+              href="/profile"
+              onClick={close}
+              className="
+                relative
+                mt-4
+                flex items-center justify-between
+                border-t border-gray-200
+                pt-3
+                text-xs font-medium
+                text-gray-500
+                transition
+                hover:text-gray-900
+              "
+            >
+              <span>View profile</span>
+
+              <ChevronRight size={14} />
+            </Link>
           </div>
         </div>
 
-        {/* Navigation */}
-        <nav className="px-4 py-5">
-          {LINKS.map((link) => {
-            const Icon = link.icon;
+        {/* ===================================================
+            THEME
+        =================================================== */}
 
-            return (
-              <Link
-                key={link.id}
-                href={link.href}
-                onClick={close}
-                className="
-                  flex items-center gap-4
-                  px-3 py-4 rounded-xl
-                  text-gray-300
-                  hover:bg-white/5
-                  hover:text-white
-                  transition-all
-                "
-              >
-                <Icon size={20} />
-                <span>{link.name}</span>
-              </Link>
-            );
-          })}
-        </nav>
+        <div className="px-5 pt-5">
+          <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-400">
+            Appearance
+          </p>
 
-        {/* Logout */}
-        <div className="absolute bottom-6 left-0 w-full px-4">
-          <button
+          <div
             className="
-              w-full
-              flex items-center gap-3
-              px-4 py-4
+              flex
               rounded-xl
-              text-gray-300
-              hover:bg-red-500/10
-              hover:text-red-400
-              transition
+              border border-gray-200
+              bg-gray-50
+              p-1
             "
           >
-            <LogOut size={20} />
-            Logout
+            <button
+              type="button"
+              className="
+                flex flex-1
+                items-center justify-center
+                gap-2
+                rounded-lg
+                bg-white
+                px-3 py-2
+                text-xs font-medium
+                text-gray-900
+                shadow-sm
+              "
+            >
+              <Sun size={14} strokeWidth={1.8} />
+              Light
+            </button>
+
+            <button
+              type="button"
+              className="
+                flex flex-1
+                items-center justify-center
+                gap-2
+                rounded-lg
+                px-3 py-2
+                text-xs font-medium
+                text-gray-400
+                transition
+                hover:text-gray-700
+              "
+            >
+              <Moon size={14} strokeWidth={1.8} />
+              Dark
+            </button>
+          </div>
+        </div>
+
+        {/* ===================================================
+            NAVIGATION
+        =================================================== */}
+
+        <div className="mt-5 flex-1 overflow-y-auto px-4 pb-4">
+          <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-gray-400">
+            Navigation
+          </p>
+
+          <nav className="space-y-0.5">
+            {LINKS.map((link) => {
+              const Icon = link.icon;
+
+              return (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  onClick={close}
+                  className="
+                    group
+                    flex items-center
+                    gap-3
+                    rounded-xl
+                    px-3 py-3
+                    text-gray-500
+                    transition-all duration-200
+                    hover:bg-gray-50
+                    hover:text-gray-900
+                    active:scale-[0.99]
+                  "
+                >
+                  <span
+                    className="
+                      flex h-8 w-8
+                      items-center justify-center
+                      rounded-lg
+                      bg-gray-50
+                      text-gray-400
+                      transition
+                      group-hover:bg-white
+                      group-hover:text-gray-900
+                      group-hover:shadow-sm
+                    "
+                  >
+                    <Icon
+                      size={16}
+                      strokeWidth={1.8}
+                    />
+                  </span>
+
+                  <span className="flex-1 text-sm font-medium">
+                    {link.name}
+                  </span>
+
+                  <ChevronRight
+                    size={14}
+                    className="
+                      text-gray-300
+                      opacity-0
+                      transition-all
+                      group-hover:translate-x-0.5
+                      group-hover:opacity-100
+                    "
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* ===================================================
+            LOGOUT
+        =================================================== */}
+
+        <div className="border-t border-gray-100 p-4">
+          <button
+            type="button"
+            className="
+              group
+              flex w-full
+              items-center
+              gap-3
+              rounded-xl
+              px-3 py-3
+              text-gray-500
+              transition-all
+              hover:bg-red-50
+              hover:text-red-600
+            "
+          >
+            <span
+              className="
+                flex h-8 w-8
+                items-center justify-center
+                rounded-lg
+                bg-gray-50
+                text-gray-400
+                transition
+                group-hover:bg-red-100
+                group-hover:text-red-500
+              "
+            >
+              <LogOut
+                size={16}
+                strokeWidth={1.8}
+              />
+            </span>
+
+            <span className="text-sm font-medium">
+              Logout
+            </span>
           </button>
+
+          <p className="mt-3 text-center text-[10px] text-gray-300">
+            Sajilo Order
+          </p>
         </div>
       </aside>
     </>

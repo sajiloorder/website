@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* your existing CSS below */
+
 @layer base {
   body {
     @apply transition-colors duration-300;
