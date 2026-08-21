@@ -187,11 +187,14 @@ export default function MobileMenu() {
                   shadow-sm
                 "
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="Sajilo Order"
-                  className="h-full w-full object-cover"
-                />
+                import Image from "next/image";
+
+<Image
+  src="/images/logo.png"
+  alt="Sajilo Order"
+  width={200}
+  height={60}
+/>
               </div>
 
               <div className="min-w-0">

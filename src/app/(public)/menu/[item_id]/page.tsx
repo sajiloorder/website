@@ -7,6 +7,7 @@ import type { DummyMenuItemType } from "@/lib/types/menu";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
+import Image from "next/image";
 
 export default function MenuItemPage() {
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ export default function MenuItemPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8 bg-white shadow-xl rounded-xl overflow-hidden">
-        <img
+        <Image
           src={item.image_url}
           alt={item.name}
           className="w-full h-80 object-cover"
