@@ -16,6 +16,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import useMenu from "@/hooks/useMenu";
+import Image from "next/image";
 
 const LINKS = [
   {
@@ -186,7 +187,7 @@ export default function MobileMenu() {
                   shadow-sm
                 "
               >
-                <img
+                <Image
                   src="/images/logo.png"
                   alt="Sajilo Order"
                   className="h-full w-full object-cover"
