@@ -6,7 +6,7 @@ import { dummy_menu_items } from "@/lib/data/menu";
 import type { DummyMenuItemType } from "@/lib/types/menu";
 
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/store/cartSlice";
+import { addToCart } from "@/store/CartSlice";
 import Image from "next/image";
 
 export default function MenuItemPage() {

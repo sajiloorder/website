@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   hydrateCart,
   type CartItem,
-} from "./cartSlice";
+} from "./CartSlice"
 
 type StoredCart =
   | CartItem[]

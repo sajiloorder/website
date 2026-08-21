@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch } from "react-redux";
-import { updateQuantity, removeFromCart } from "@/store/cartSlice";
+import { updateQuantity, removeFromCart } from "@/store/CartSlice";
 
 interface CartControlsProps {
   item: {

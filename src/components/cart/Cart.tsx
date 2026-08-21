@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
+import { removeFromCart, updateQuantity, clearCart } from "@/store/CartSlice";
 import Link from "next/link";
 import Image from "next/image";
 type CartItem = {
