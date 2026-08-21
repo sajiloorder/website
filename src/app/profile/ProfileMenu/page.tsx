@@ -5,15 +5,13 @@ import Image from "next/image";
 import {
   User,
   Wallet,
-  Settings,
-  Heart,
-  Download,
+  
   LogOut,
   ChevronRight,
   MapPin,
   BookOpen,
   ListTodo,
-  Award,
+  
 } from "lucide-react";
 import useMenu from "@/hooks/useMenu";
 

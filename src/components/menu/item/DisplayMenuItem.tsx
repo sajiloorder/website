@@ -29,13 +29,14 @@ export default function DisplayMenuItem({ item, onClose }: ModalProps) {
       return;
     }
 
-    dispatch(
-      addToCart({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-      }),
-    );
+   dispatch(
+  addToCart({
+    id: item.id,
+    name: item.name,
+    price: item.price,
+    quantity: 1,
+  })
+);
 
     onClose();
   }
