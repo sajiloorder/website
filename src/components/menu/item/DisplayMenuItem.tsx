@@ -3,7 +3,7 @@ import React from "react";
 import { DummyMenuItemType } from "@/lib/types/menu";
 import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
-import { addToCart } from "@/store/cartSlice";
+import { addToCart } from "@/store/CartSlice";
 import Button from "@/components/ui/buttons/Button";
 import Image from "next/image";
 
