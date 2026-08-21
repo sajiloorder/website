@@ -21,23 +21,23 @@ export default function CartControls({ item }: CartControlsProps) {
       }),
     );
   };
+const handleDecrease = () => {
+  if (item.quantity <= 1) {
+    dispatch(removeFromCart(item.id));
+  } else {
+    dispatch(
+      updateQuantity({
+        id: item.id,
+        quantity: item.quantity - 1,
+      }),
+    );
+  }
+};
 
-  const handleDecrease = () => {
-    if (item.quantity <= 1) {
-      dispatch(removeFromCart({ id: item.id }));
-    } else {
-      dispatch(
-        updateQuantity({
-          id: item.id,
-          quantity: item.quantity - 1,
-        }),
-      );
-    }
-  };
+const handleRemove = () => {
+  dispatch(removeFromCart(item.id));
+};
 
-  const handleRemove = () => {
-    dispatch(removeFromCart({ id: item.id }));
-  };
 
   return (
     <div className="flex items-center gap-2 mt-1">

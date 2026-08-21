@@ -92,23 +92,26 @@ export default function MenuSearch() {
   /* ---------------------------------------------
      LOAD RECENT SEARCHES
   --------------------------------------------- */
+useEffect(() => {
+  try {
+    const saved = localStorage.getItem("recent-menu-searches");
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("recent-menu-searches");
+    if (!saved) return;
 
-      if (!saved) return;
+    const parsed: unknown = JSON.parse(saved);
 
-      const parsed = JSON.parse(saved);
-
-      if (Array.isArray(parsed)) {
-        setRecentSearches(parsed);
-      }
-    } catch {
-      // Ignore invalid localStorage data
+    if (
+      Array.isArray(parsed) &&
+      parsed.every(
+        (item): item is string => typeof item === "string",
+      )
+    ) {
+      setRecentSearches(parsed);
     }
-  }, []);
-
+  } catch {
+    // Ignore invalid localStorage data
+  }
+}, []);
   /* ---------------------------------------------
      SAVE RECENT SEARCH
   --------------------------------------------- */

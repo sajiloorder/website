@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
 import Link from "next/link";
-
+import Image from "next/image";
 type CartItem = {
   id: string | number;
   name: string;
@@ -43,9 +43,9 @@ export default function Cart() {
     );
   };
 
-  const handleRemoveItem = (id: string | number) => {
-    dispatch(removeFromCart({ id }));
-  };
+ const handleRemoveItem = (id: string | number) => {
+  dispatch(removeFromCart(id));
+};
   const handleClearCart = () => {
     dispatch(clearCart());
   };
