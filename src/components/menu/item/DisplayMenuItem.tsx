@@ -5,6 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/cartSlice";
 import Button from "@/components/ui/buttons/Button";
+import Image from "next/image";
 
 type ModalProps = {
   item: DummyMenuItemType;
@@ -60,7 +61,7 @@ export default function DisplayMenuItem({ item, onClose }: ModalProps) {
         <section>
           <div className=" p-6 grid md:grid-cols-2 gap-6 bg-white shadow-xl  rounded-xl overflow-hidden ">
             {/* image  */}
-            <img
+            <Image
               src={item.image_url}
               alt={item.name}
               className="w-full h-80 object-cover rounded-md"

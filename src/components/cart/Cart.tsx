@@ -1,4 +1,5 @@
 "use client";
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, updateQuantity, clearCart } from "@/store/cartSlice";
 import Link from "next/link";
@@ -87,7 +88,7 @@ export default function Cart() {
                 <div className="flex gap-3 items-start">
                   {/* IMAGE */}
                   <div className="h-14 w-14 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
-                    <img
+                    <Image
                       src={item.image_url}
                       alt={item.name}
                       className="h-full w-full object-cover"
